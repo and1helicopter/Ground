@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/scenejs.js"></script>
+</head>
+<body>
+    <div class="menu">
+        <table>
+            <tr>
+                <td style="width: 5%;"></td>
+                <td style="width: 50%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+                <td style="width: 15%;"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td style="width: 5%;">
+                    <input name="select" type="radio" checked onclick="azimuth_change()">
+                </td>
+                <td style="width: 50%;">
+                    <label>Азимут: </label>
+                </td>
+                <td style="width: 15%;">
+                    <button id="azimuth_start" onclick="start_azimuth()">
+                        <img src="img/start.png">
+                    </button>
+                </td>
+                <td style="width: 15%;">
+                    <button id="azimuth_stop" onclick="stop_azimuth()">
+                        <img src="img/stop.png">
+                    </button>
+                </td>
+                <td style="width: 15%;">
+                    <input id="azimuth" type="number" min="0" max="64" value="0" onchange="show_azimuth(value)">
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td style="width: 5%;">
+                    <input name="select" type="radio" onclick="fast_change()">
+                </td>
+                <td style="width: 50%;">
+                    <label>Быстрый обзор:</label>
+                </td>
+                <td style="width: 15%;">
+                    <button id="fast_start" onclick="start_fast()" disabled>
+                        <img src="img/start.png">
+                    </button>
+                </td>
+                <td style="width: 15%;">
+                    <button id="fast_stop" onclick="stop_fast()" disabled>
+                        <img src="img/stop.png">
+                    </button>
+                </td>
+                <td style="width: 15%;">
+                    <input id="fast" type="number" min="0" max="8" value="0" onchange="show_fast(value)" disabled>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td style="width: 5%;">
+                    <input name="select" type="radio" onclick="slow_change()">
+                </td>
+                <td style="width: 50%;">
+                    <label>Медленный обзор:</label>
+                </td>
+                <td style="width: 15%;">
+                    <button id="slow_start" onclick="start_slow()" disabled>
+                        <img src="img/start.png">
+                    </button>
+                </td>
+                <td style="width: 15%;">
+                    <button id="slow_stop" onclick="stop_slow()" disabled>
+                        <img src="img/stop.png">
+                    </button>
+                </td>
+                <td style="width: 15%;">
+                    <input id="slow" type="number" min="0" max="48" value="0" onchange="show_slow(value)" disabled>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="info">
+        <label>Проекции в плоскостях:</label>
+        <br>
+        <label>Размерность по азимуту:</label>
+        <label id="label_angel"></label>
+        <label> К.Е.</label>
+        <table>
+            <tr>
+                <th style="width: 33%;">Азимутальная</th>
+                <th style="width: 33%;">Угломерная</th>
+                <th style="width: 33%;">Картиная</th>
+            </tr>
+            <tr>
+                <td style="width: 33%;">
+                    <img id="azimut" class="zone">
+                </td>
+                <td style="width: 33%;">
+                    <img id="uglomer" class="zone">
+                </td>
+                <td style="width: 33%;">
+                    <img id="kartin" class="zone">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script src="js/scene.js"></script>
+</body>
+</html>
