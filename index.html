@@ -11,14 +11,20 @@
     <div class="menu">
         <table>
             <tr>
-                <td style="width: 5%;"></td>
-                <td style="width: 50%;"></td>
-                <td style="width: 15%;"></td>
-                <td style="width: 15%;"></td>
+                <td style="width: 50px;"></td>
+                <td style="width: 50%;">
+                    <label>КАНАЛ:</label>
+                </td>
+                <td style="width: 15%;">
+                    1-3<input name="chanel" type="radio" onclick="chanel_change(false)">
+                </td>
+                <td style="width: 15%;">
+                    2-4<input name="chanel" type="radio" checked onclick="chanel_change(true)">
+                </td>
                 <td style="width: 15%;"></td>
             </tr>
         </table>
-        <table>
+        <table style="border: solid 1px rgba(0,0,0,0.1)">
             <tr>
                 <td style="width: 5%;">
                     <input name="select" type="radio" checked onclick="azimuth_change()">
@@ -38,6 +44,21 @@
                 </td>
                 <td style="width: 15%;">
                     <input id="azimuth" type="number" min="0" max="64" value="0" onchange="show_azimuth(value)">
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 5%;"></td>
+                <td style="width: 50%; " >
+                    <label><big>&phi;</big>цу:</label>
+                </td>
+                <td style="width: 15%;">
+                    0&deg;<input name="phica" type="radio" checked onclick="change_ficu(0)">
+                </td>
+                <td style="width: 15%;">
+                    8&deg;<input name="phica" type="radio" onclick="change_ficu(8)">
+                </td>
+                <td style="width: 15%;">
+                    12&deg;<input name="phica" type="radio" onclick="change_ficu(12)">
                 </td>
             </tr>
         </table>
