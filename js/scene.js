@@ -31,6 +31,12 @@ var chanel = true;      //true: 2-4, false: 1-3
 
 var timer;
 
+function y_value(x_value, z_value){  
+    var r = 1000 * Math.cos(Math.asin(z_value/1000));
+    var y0 = r * Math.cos(Math.asin(x_value/r));
+    return y0;
+}
+
 var azimuth_l_clips = [
     // Left
     {
@@ -74,12 +80,14 @@ var azimuth_l_clips = [
     }
 ];
 var azimuth_l_position = [
-    -azimuth_left_position_l, azimuth_bottom_position, -azimuth_bottom_position,
-    -azimuth_right_position_l, azimuth_bottom_position, -azimuth_top_position,
-    -azimuth_right_position_l, azimuth_top_position, -azimuth_top_position,
-    -azimuth_left_position_l, azimuth_top_position, -azimuth_bottom_position,
+    -azimuth_left_position_l, azimuth_bottom_position, -y_value(azimuth_left_position_l, azimuth_bottom_position),
+    -azimuth_right_position_l, azimuth_bottom_position, -y_value(azimuth_right_position_l, azimuth_bottom_position),
+    -azimuth_right_position_l, azimuth_top_position, -y_value(azimuth_right_position_l, azimuth_top_position),
+    -azimuth_left_position_l, azimuth_top_position, -y_value(azimuth_left_position_l, azimuth_top_position),
     -50, 130, 0
 ]
+
+
 
 var azimuth_l_clips_add = [
     // Left
@@ -396,8 +404,8 @@ var scene = SceneJS.createScene({
                                                                         // Torus primitive, implemented by plugin at http://scenejs.org/api/latest/plugins/node/geometry/torus.js
                                                                         {
                                                                             type:"geometry/sphere",
-                                                                            latudeBands:20,
-                                                                            longitudeBands:30,
+                                                                            latudeBands:36,
+                                                                            longitudeBands:36,
                                                                             radius:1000
                                                                         }
                                                                     ]
@@ -431,8 +439,8 @@ var scene = SceneJS.createScene({
                                                                     clips: azimuth_l_clips,
                                                                     nodes:[{
                                                                         type:"geometry/sphere",
-                                                                        latudeBands:20,
-                                                                        longitudeBands:30,
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
                                                                         radius:990
                                                                     }] 
                                                                 }
@@ -445,18 +453,13 @@ var scene = SceneJS.createScene({
                                         {
                                             type:"layer",
                                             id:"azimuth_l_lines",
-                                            enabled: false,
+                                            enabled: true,
                                             nodes: [
                                                 {
                                                     type: "geometry",
                                                     primitive: "lines",
                                                     positions: azimuth_l_position,
                                                     indices: [
-                                                        0, 1,
-                                                        1, 2,
-                                                        2, 3,
-                                                        3, 0,
-
                                                         0, 4,
                                                         1, 4,
                                                         2, 4,
@@ -595,6 +598,12 @@ function azimuth_update(clipsNode){
     azimuth_l_clips[1].dist = -azimuth_right_position_l;      //right
     
     clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips);
+    scene.getNode('azimuth_l_lines',function (clipsNode) {
+        clipsNode.setEnabled(true);
+        azimuth_l_position[0] = azimuth_left_position_l;  //left
+        clipsNode.nodes[0]._core.arrays.positions = azimuth_l_position;
+        clipsNode.nodes[0].setPositions(azimuth_l_position);
+    });
 }
 
 function stop_azimuth() {
