@@ -28,7 +28,7 @@ var azimuth_right_position_r = 0;
 var azimuth_top_position = 700;
 var azimuth_bottom_position = 200;
 var azimuth_index = "0";
-var ficu = 0;
+var azimuth_ficu = 0;
 
 function y_value(x_value, z_value){  
     var r = 998 * Math.cos(Math.asin(z_value/998));
@@ -468,6 +468,120 @@ var fast_r_clips_add = [
         mode: "inside"
     }
 ];
+
+//SLOW
+var slow_left_position_l = 672;
+var slow_right_position_l = 661.5;
+var slow_left_position_r = 0;
+var slow_right_position_r = 0;
+var slow_top_position = 700;
+var slow_bottom_position = 200;
+var slow_index = "0";
+var slow_ficu = 5;
+
+var slow_l_clips = [
+    // Left
+    {
+        x: -1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: slow_left_position_l,
+        mode: "inside"
+    },
+    // Right
+    {
+        x: 1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: slow_right_position_l,
+        mode: "inside"
+    },
+    // Bottom
+    {
+        x: 0.0,
+        y: -1.0,
+        z: 0.0,
+        dist: -slow_bottom_position,
+        mode: "inside"
+    },
+    // Top
+    {
+        x: 0.0,
+        y: 1.0,
+        z: 0.0,
+        dist: slow_top_position,
+        mode: "inside"
+    },
+    //Back
+    {
+        x: 0.0,
+        y: 0.0,
+        z: 1.0,
+        dist: 0.0,
+        mode: "inside"
+    }
+];
+var slow_l_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        -50, 130, 0
+    ]
+}
+
+var slow_r_clips = [
+    // Left
+    {
+        x: -1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: slow_left_position_l,
+        mode: "inside"
+    },
+    // Right
+    {
+        x: 1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: slow_right_position_l,
+        mode: "inside"
+    },
+    // Bottom
+    {
+        x: 0.0,
+        y: -1.0,
+        z: 0.0,
+        dist: -slow_bottom_position,
+        mode: "inside"
+    },
+    // Top
+    {
+        x: 0.0,
+        y: 1.0,
+        z: 0.0,
+        dist: slow_top_position,
+        mode: "inside"
+    },
+    //Back
+    {
+        x: 0.0,
+        y: 0.0,
+        z: 1.0,
+        dist: 0.0,
+        mode: "inside"
+    }
+];
+var slow_r_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        -50, 130, 0
+    ]
+}
 
 
 // Define scene
@@ -1122,9 +1236,58 @@ var scene = SceneJS.createScene({
                                                 }
                                             ]
                                         },  
-                                        
                                         //slow_left
-
+                                        {   
+                                            type:"layer",
+                                            id:"slow_l",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "flags",
+                                                    flags: {
+                                                        transparent: true,
+                                                        solid: false
+                                                    },
+                                                    nodes: [
+                                                        {
+                                                            type: "material",
+                                                            color: {r: 0.8, g: 0.2, b: 0.2},
+                                                            alpha: 0.4,
+                                                            nodes: [
+                                                                {
+                                                                    type: "clips",
+                                                                    clips: slow_l_clips,
+                                                                    nodes:[{
+                                                                        type:"geometry/sphere",
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:998
+                                                                    }] 
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"slow_l_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: slow_l_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },                                       
                                         //slow_right
                                     ]
                                 }
@@ -1147,8 +1310,8 @@ function chanel_change(value){
     }
 }
 
-function change_ficu(value){
-    ficu = value;
+function change_azimuth_ficu(value){
+    azimuth_ficu = value;
     show_azimuth(azimuth_index);
 }
 
@@ -1196,7 +1359,7 @@ function azimuth_update(azimuth_index){
             }  
         }
 
-        if(ficu === 0){
+        if(azimuth_ficu === 0){
             scene.getNode('azimuth_l_add', function (clipsNode){
                 clipsNode.setEnabled(true);
                 azimuth_l_clips_add[0].dist = azimuth_left_position_l;        
@@ -1228,13 +1391,13 @@ function azimuth_update(azimuth_index){
             azimuth_l_clips[2].dist = -azimuth_bottom_position;
             azimuth_l_clips[3].dist = azimuth_top_position;
         }
-        else if(ficu === 8){
+        else if(azimuth_ficu === 8){
             azimuth_bottom_position = 365;
             azimuth_top_position = 535;
             azimuth_l_clips[2].dist = -azimuth_bottom_position;
             azimuth_l_clips[3].dist = azimuth_top_position;
         }
-        else if(ficu === 12){
+        else if(azimuth_ficu === 12){
             azimuth_bottom_position = 450;
             azimuth_top_position = 625;
             azimuth_l_clips[2].dist = -azimuth_bottom_position;
@@ -1287,7 +1450,7 @@ function azimuth_update(azimuth_index){
             }  
         }
 
-        if(ficu === 0){
+        if(azimuth_ficu === 0){
             scene.getNode('azimuth_r_add', function (clipsNode){
                 clipsNode.setEnabled(true);
                 azimuth_r_clips_add[0].dist = -azimuth_left_position_r;        
@@ -1319,13 +1482,13 @@ function azimuth_update(azimuth_index){
             azimuth_r_clips[2].dist = -azimuth_bottom_position;
             azimuth_r_clips[3].dist = azimuth_top_position;
         }
-        else if(ficu === 8){
+        else if(azimuth_ficu === 8){
             azimuth_bottom_position = 365;
             azimuth_top_position = 535;
             azimuth_r_clips[2].dist = -azimuth_bottom_position;
             azimuth_r_clips[3].dist = azimuth_top_position;
         }
-        else if(ficu === 12){
+        else if(azimuth_ficu === 12){
             azimuth_bottom_position = 450;
             azimuth_top_position = 625;
             azimuth_r_clips[2].dist = -azimuth_bottom_position;
@@ -1792,39 +1955,63 @@ function fast_change() {
     document.getElementById("slow").disabled = true;
 }
 
-
-
-
-var slow_index = 0;
-var lastLayerNodeLeftSlow;
-var lastLayerNodeRightSlow;
-
 function start_slow() {
     clearInterval(timer);
     timer = setInterval(
         function () {
-            scene.getNode(options_slow_r [slow_index % options_slow_r.length],
-                function (layerNode) {
-                    if (lastLayerNodeRightSlow) {
-                        lastLayerNodeRightSlow.setEnabled(false);
-                    }
-                    layerNode.setEnabled(true);
-                    lastLayerNodeRightSlow = layerNode;
-                });
-            scene.getNode(options_slow_l [slow_index % options_slow_l.length],
-                function (layerNode) {
-                    if (lastLayerNodeLeftSlow) {
-                        lastLayerNodeLeftSlow.setEnabled(false);
-                    }
-                    layerNode.setEnabled(true);
-                    lastLayerNodeLeftSlow = layerNode;
-                    slow_index++;
-                    if(slow_index === 49){
-                        slow_index = 1;
-                    }
-                    document.getElementById("slow").value = slow_index;
-                });
+            slow_index++;
+            if(slow_index > 8)  slow_index = 1;
+            slow_update(slow_index);  
         }, 1000);
+}
+
+function slow_update(slow_index){
+    var index = slow_index - 1;
+    scene.getNode('slow_r', function (clipsNode){
+        clipsNode.setEnabled(true);
+        
+        if(slow_ficu === 15){
+            if(chanel){
+                slow_left_position_r = 672 - 84 * index; 
+                slow_right_position_r = 588 - 84 * index;
+            }
+            else {
+                slow_left_position_r = 336 - 84 * index; 
+                slow_right_position_r = 252 - 84 * index;
+            }
+            slow_bottom_position = 200;
+            slow_top_position = 440;
+        }
+        else if(slow_ficu === 10){}
+        else if(slow_ficu === 5){}
+
+        slow_l_clips[0].dist = slow_left_position_l;        //left
+        slow_l_clips[1].dist = -slow_right_position_l;      //right
+        slow_l_clips[2].dist = -slow_bottom_position;
+        slow_l_clips[3].dist = slow_top_position;
+        
+        clipsNode.nodes[0].nodes[0].nodes[0].setClips(slow_l_clips);
+        scene.getNode('slow_l_lines',function (clipsNode) {
+            clipsNode.setEnabled(true);
+            slow_l_position.positions[0] = -slow_left_position_l;  //left
+            slow_l_position.positions[1] = slow_bottom_position;
+            slow_l_position.positions[2] = -y_value(slow_left_position_l, slow_bottom_position);
+
+            slow_l_position.positions[3] = -slow_right_position_l;
+            slow_l_position.positions[4] = slow_bottom_position;
+            slow_l_position.positions[5] = -y_value(slow_right_position_l, slow_bottom_position);
+        
+            slow_l_position.positions[6] = -slow_right_position_l;
+            slow_l_position.positions[7] = slow_top_position;
+            slow_l_position.positions[8] = -y_value(slow_right_position_l, slow_top_position);
+
+            slow_l_position.positions[9] = -slow_left_position_l;
+            slow_l_position.positions[10] = slow_top_position;
+            slow_l_position.positions[11] = -y_value(slow_left_position_l, slow_top_position);
+
+            clipsNode.nodes[0].setPositions(slow_l_position);
+        });
+    });
 }
 
 function stop_slow() {
@@ -1867,6 +2054,9 @@ function slow_change() {
     document.getElementById("azimuth_start").disabled = true;
     document.getElementById("azimuth_stop").disabled = true;
     document.getElementById("azimuth").disabled = true;
+    document.getElementById("phica0").disabled = true;
+    document.getElementById("phica8").disabled = true;
+    document.getElementById("phica12").disabled = true;
     document.getElementById("fast_start").disabled = true;
     document.getElementById("fast_stop").disabled = true;
     document.getElementById("fast").disabled = true;
@@ -1949,27 +2139,3 @@ function show_info (alg){
     }
     document.getElementById("label_angel").textContent  = str;
 }
-
-options_azimuth_l = [
-
-];
-
-options_azimuth_r = [
-
-];
-
-options_fast_l = [
-
-];
-
-options_fast_r = [
-
-];
-
-options_slow_l = [
-
-];
-
-options_slow_r = [
-
-];
