@@ -16,6 +16,10 @@ SceneJS.setConfigs({
     pluginPath:"./plugins"
 });
 
+var chanel = true;      //true: 2-4, false: 1-3
+var timer;
+var algorithm = 0;
+
 //AZIMUTH
 var azimuth_left_position_l = 672;
 var azimuth_right_position_l = 661.5;
@@ -23,16 +27,11 @@ var azimuth_left_position_r = 0;
 var azimuth_right_position_r = 0;
 var azimuth_top_position = 700;
 var azimuth_bottom_position = 200;
-var azimuth_index = 0;
+var azimuth_index = "0";
 var ficu = 0;
 
-var chanel = true;      //true: 2-4, false: 1-3
-
-
-var timer;
-
 function y_value(x_value, z_value){  
-    var r = 999 * Math.cos(Math.asin(z_value/999));
+    var r = 998 * Math.cos(Math.asin(z_value/998));
     var y0 = r * Math.cos(Math.asin(x_value/r));
     return y0;
 }
@@ -251,6 +250,225 @@ var azimuth_r_clips_add = [
     }
 ];
 
+//FAST
+var fast_left_position_l = 672;
+var fast_right_position_l = 661.5;
+var fast_left_position_r = 0;
+var fast_right_position_r = 0;
+var fast_top_position = 700;
+var fast_bottom_position = 200;
+var fast_index = "0";
+
+var fast_l_clips = [
+    // Left
+    {
+        x: -1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: fast_left_position_l,
+        mode: "inside"
+    },
+    // Right
+    {
+        x: 1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: fast_right_position_l,
+        mode: "inside"
+    },
+    // Bottom
+    {
+        x: 0.0,
+        y: -1.0,
+        z: 0.0,
+        dist: -fast_bottom_position,
+        mode: "inside"
+    },
+    // Top
+    {
+        x: 0.0,
+        y: 1.0,
+        z: 0.0,
+        dist: fast_top_position,
+        mode: "inside"
+    },
+    //Back
+    {
+        x: 0.0,
+        y: 0.0,
+        z: 1.0,
+        dist: 0.0,
+        mode: "inside"
+    }
+];
+var fast_l_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        -50, 130, 0
+    ]
+}
+var fast_l_add_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        -50, 130, 0
+    ]
+}
+var fast_l_clips_add = [
+    // Left
+    {
+        x: -1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: fast_left_position_l,
+        mode: "inside"
+    },
+    // Right
+    {
+        x: 1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: fast_right_position_l,
+        mode: "inside"
+    },
+    // Bottom
+    {
+        x: 0.0,
+        y: -1.0,
+        z: 0.0,
+        dist: -535,
+        mode: "inside"
+    },
+    // Top
+    {
+        x: 0.0,
+        y: 1.0,
+        z: 0.0,
+        dist: 700,
+        mode: "inside"
+    },
+    //Back
+    {
+        x: 0.0,
+        y: 0.0,
+        z: 1.0,
+        dist: 0.0,
+        mode: "inside"
+    }
+];
+
+var fast_r_clips = [
+    // Left
+    {
+        x: -1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: fast_left_position_l,
+        mode: "inside"
+    },
+    // Right
+    {
+        x: 1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: fast_right_position_l,
+        mode: "inside"
+    },
+    // Bottom
+    {
+        x: 0.0,
+        y: -1.0,
+        z: 0.0,
+        dist: -fast_bottom_position,
+        mode: "inside"
+    },
+    // Top
+    {
+        x: 0.0,
+        y: 1.0,
+        z: 0.0,
+        dist: fast_top_position,
+        mode: "inside"
+    },
+    //Back
+    {
+        x: 0.0,
+        y: 0.0,
+        z: 1.0,
+        dist: 0.0,
+        mode: "inside"
+    }
+];
+var fast_r_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        // -azimuth_left_position_l, azimuth_bottom_position, -y_value(azimuth_left_position_l, azimuth_bottom_position),
+        // -azimuth_right_position_l, azimuth_bottom_position, -y_value(azimuth_right_position_l, azimuth_bottom_position),
+        // -azimuth_right_position_l, azimuth_top_position, -y_value(azimuth_right_position_l, azimuth_top_position),
+        // -azimuth_left_position_l, azimuth_top_position, -y_value(azimuth_left_position_l, azimuth_top_position),
+        -50, 130, 0
+    ]
+}
+var fast_r_add_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        -50, 130, 0
+    ]
+}
+var fast_r_clips_add = [
+    // Left
+    {
+        x: -1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: fast_left_position_l,
+        mode: "inside"
+    },
+    // Right
+    {
+        x: 1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: fast_right_position_l,
+        mode: "inside"
+    },
+    // Bottom
+    {
+        x: 0.0,
+        y: -1.0,
+        z: 0.0,
+        dist: -535,
+        mode: "inside"
+    },
+    // Top
+    {
+        x: 0.0,
+        y: 1.0,
+        z: 0.0,
+        dist: 700,
+        mode: "inside"
+    },
+    //Back
+    {
+        x: 0.0,
+        y: 0.0,
+        z: 1.0,
+        dist: 0.0,
+        mode: "inside"
+    }
+];
+
 
 // Define scene
 var scene = SceneJS.createScene({
@@ -260,7 +478,7 @@ var scene = SceneJS.createScene({
             look:{ x: 0, y:200, z: 0 },
             yaw:50,
             pitch:-20,
-            //maxPitch: -12,
+            maxPitch: -12,
             zoom: 1000,
             zoomSensitivity:-50.0,
             cursorSize:1.0,
@@ -517,7 +735,7 @@ var scene = SceneJS.createScene({
                                                                         type:"geometry/sphere",
                                                                         latudeBands:36,
                                                                         longitudeBands:36,
-                                                                        radius:999
+                                                                        radius:998
                                                                     }] 
                                                                 }
                                                             ]
@@ -568,7 +786,7 @@ var scene = SceneJS.createScene({
                                                                         type:"geometry/sphere",
                                                                         latudeBands:36,
                                                                         longitudeBands:36,
-                                                                        radius:999
+                                                                        radius:998
                                                                     }] 
                                                                 }
                                                             ]
@@ -620,7 +838,7 @@ var scene = SceneJS.createScene({
                                                                         type:"geometry/sphere",
                                                                         latudeBands:36,
                                                                         longitudeBands:36,
-                                                                        radius:999
+                                                                        radius:998
                                                                     }] 
                                                                 }
                                                             ]
@@ -671,7 +889,7 @@ var scene = SceneJS.createScene({
                                                                         type:"geometry/sphere",
                                                                         latudeBands:36,
                                                                         longitudeBands:36,
-                                                                        radius:999
+                                                                        radius:998
                                                                     }] 
                                                                 }
                                                             ]
@@ -699,9 +917,212 @@ var scene = SceneJS.createScene({
                                             ]
                                         },  
                                         //fast_left
-
+                                        {   
+                                            type:"layer",
+                                            id:"fast_l",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "flags",
+                                                    flags: {
+                                                        transparent: true,
+                                                        solid: false
+                                                    },
+                                                    nodes: [
+                                                        {
+                                                            type: "material",
+                                                            color: {r: 0.8, g: 0.2, b: 0.2},
+                                                            alpha: 0.3,
+                                                            nodes: [
+                                                                {
+                                                                    type: "clips",
+                                                                    clips: fast_l_clips,
+                                                                    nodes:[{
+                                                                        type:"geometry/sphere",
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:998
+                                                                    }] 
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"fast_l_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: fast_l_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {   
+                                            type:"layer",
+                                            id:"fast_l_add",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "flags",
+                                                    flags: {
+                                                        transparent: true,
+                                                        solid: false
+                                                    },
+                                                    nodes: [
+                                                        {
+                                                            type: "material",
+                                                            color: {r: 0.8, g: 0.2, b: 0.2},
+                                                            alpha: 0.3,
+                                                            nodes: [
+                                                                {
+                                                                    type: "clips",
+                                                                    clips: fast_l_clips_add,
+                                                                    nodes:[{
+                                                                        type:"geometry/sphere",
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:998
+                                                                    }] 
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"fast_l_add_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: fast_l_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },                                     
                                         //fast_right
-
+                                        {   
+                                            type:"layer",
+                                            id:"fast_r",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "flags",
+                                                    flags: {
+                                                        transparent: true,
+                                                        solid: false
+                                                    },
+                                                    nodes: [
+                                                        {
+                                                            type: "material",
+                                                            color: {r: 0.8, g: 0.2, b: 0.2},
+                                                            alpha: 0.3,
+                                                            nodes: [
+                                                                {
+                                                                    type: "clips",
+                                                                    clips: fast_r_clips,
+                                                                    nodes:[{
+                                                                        type:"geometry/sphere",
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:998
+                                                                    }] 
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"fast_r_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: fast_r_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {   
+                                            type:"layer",
+                                            id:"fast_r_add",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "flags",
+                                                    flags: {
+                                                        transparent: true,
+                                                        solid: false
+                                                    },
+                                                    nodes: [
+                                                        {
+                                                            type: "material",
+                                                            color: {r: 0.8, g: 0.2, b: 0.2},
+                                                            alpha: 0.3,
+                                                            nodes: [
+                                                                {
+                                                                    type: "clips",
+                                                                    clips: fast_r_clips_add,
+                                                                    nodes:[{
+                                                                        type:"geometry/sphere",
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:998
+                                                                    }] 
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"fast_r_add_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: fast_r_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },  
+                                        
                                         //slow_left
 
                                         //slow_right
@@ -718,7 +1139,12 @@ var scene = SceneJS.createScene({
 
 function chanel_change(value){
     chanel = value;
-    show_azimuth(azimuth_index);
+    if(algorithm === 0){
+        show_azimuth(azimuth_index);
+    }
+    else if (algorithm === 1){
+        show_fast(fast_index);
+    }
 }
 
 function change_ficu(value){
@@ -978,16 +1404,19 @@ function show_azimuth(value) {
     }
     azimuth_index = value;
     azimuth_update(azimuth_index);
-
 }
 
 function azimuth_change() {
+    algorithm = 0;
     stop_azimuth();
     stop_fast();
     stop_slow();
     document.getElementById("azimuth_start").disabled = false;
     document.getElementById("azimuth_stop").disabled = false;
     document.getElementById("azimuth").disabled = false;
+    document.getElementById("phica0").disabled = false;
+    document.getElementById("phica8").disabled = false;
+    document.getElementById("phica12").disabled = false;
     document.getElementById("fast_start").disabled = true;
     document.getElementById("fast_stop").disabled = true;
     document.getElementById("fast").disabled = true;
@@ -996,77 +1425,365 @@ function azimuth_change() {
     document.getElementById("slow").disabled = true;
 }
 
-var fast_index = 0;
-var lastLayerNodeLeftFast;
-var lastLayerNodeRightFast;
-
 function start_fast() {
     clearInterval(timer);
     timer = setInterval(
         function () {
-            scene.getNode(options_fast_r [fast_index % options_fast_r.length],
-                function (layerNode) {
-                    if (lastLayerNodeRightFast) {
-                        lastLayerNodeRightFast.setEnabled(false);
-                    }
-                    layerNode.setEnabled(true);
-                    lastLayerNodeRightFast = layerNode;
-                });
-            scene.getNode(options_fast_l [fast_index % options_fast_l.length],
-                function (layerNode) {
-                    if (lastLayerNodeLeftFast) {
-                        lastLayerNodeLeftFast.setEnabled(false);
-                    }
-                    layerNode.setEnabled(true);
-                    lastLayerNodeLeftFast = layerNode;
-                    fast_index++;
-                    if(fast_index === 9){
-                        fast_index = 1;
-                    }
-                    document.getElementById("fast").value = fast_index;
-                });
+            fast_index++;
+            if(fast_index > 4)  fast_index = 1;
+            fast_update(fast_index);            
         }, 1000);
 }
 
+function fast_update(fast_index){
+    var index = fast_index - 1;
+    scene.getNode('fast_l', function (clipsNode){
+        clipsNode.setEnabled(true);
+
+        if(index === 0){
+            scene.getNode('fast_l_add', function (clipsNode){
+                clipsNode.setEnabled(false);
+                scene.getNode('fast_l_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(false);
+                });
+            });
+            if(chanel){
+                fast_left_position_l = 672; 
+                fast_right_position_l = 504;
+            }
+            else {
+                fast_left_position_l = 336; 
+                fast_right_position_l = 168;
+            }
+            fast_bottom_position = 365;
+            fast_top_position = 535;
+        }
+        else if(index === 1){
+            scene.getNode('fast_l_add', function (clipsNode){
+                clipsNode.setEnabled(false);
+                scene.getNode('fast_l_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(false);
+                });
+            });
+            if(chanel){
+                fast_left_position_l = 504; 
+                fast_right_position_l = 336;
+            }
+            else {
+                fast_left_position_l = 168; 
+                fast_right_position_l = 0;
+            }
+            fast_bottom_position = 365;
+            fast_top_position = 535;
+        } 
+        else if(index === 2){
+            if(chanel){
+                fast_left_position_l = 672; 
+                fast_right_position_l = 504;
+            }
+            else {
+                fast_left_position_l = 336; 
+                fast_right_position_l = 168;
+            }
+            fast_bottom_position = 200;
+            fast_top_position = 365;
+            scene.getNode('fast_l_add', function (clipsNode){
+                clipsNode.setEnabled(true);
+                fast_l_clips_add[0].dist = fast_left_position_l;        
+                fast_l_clips_add[1].dist = -fast_right_position_l;
+                clipsNode.nodes[0].nodes[0].nodes[0].setClips(fast_l_clips_add);
+                scene.getNode('fast_l_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(true);
+                    fast_l_add_position.positions[0] = -fast_left_position_l;
+                    fast_l_add_position.positions[1] = 535;
+                    fast_l_add_position.positions[2] = -y_value(fast_left_position_l, 535);
+            
+                    fast_l_add_position.positions[3] = -fast_right_position_l;
+                    fast_l_add_position.positions[4] = 535;
+                    fast_l_add_position.positions[5] = -y_value(fast_right_position_l, 535);
+                
+                    fast_l_add_position.positions[6] = -fast_right_position_l;
+                    fast_l_add_position.positions[7] = 700;
+                    fast_l_add_position.positions[8] = -y_value(fast_right_position_l, 700);
+            
+                    fast_l_add_position.positions[9] = -fast_left_position_l;
+                    fast_l_add_position.positions[10] = 700;
+                    fast_l_add_position.positions[11] = -y_value(fast_left_position_l, 700);
+            
+                    clipsNode.nodes[0].setPositions(fast_l_add_position);
+                });
+            });
+        }
+        else if(index === 3){
+            if(chanel){
+                fast_left_position_l = 504; 
+                fast_right_position_l = 336;
+            }
+            else {
+                fast_left_position_l = 168; 
+                fast_right_position_l = 0;
+            }
+            fast_bottom_position = 200;
+            fast_top_position = 365;
+            scene.getNode('fast_l_add', function (clipsNode){
+                clipsNode.setEnabled(true);
+                fast_l_clips_add[0].dist = fast_left_position_l;        
+                fast_l_clips_add[1].dist = -fast_right_position_l;
+                clipsNode.nodes[0].nodes[0].nodes[0].setClips(fast_l_clips_add);
+                scene.getNode('fast_l_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(true);
+                    fast_l_add_position.positions[0] = -fast_left_position_l;
+                    fast_l_add_position.positions[1] = 535;
+                    fast_l_add_position.positions[2] = -y_value(fast_left_position_l, 535);
+            
+                    fast_l_add_position.positions[3] = -fast_right_position_l;
+                    fast_l_add_position.positions[4] = 535;
+                    fast_l_add_position.positions[5] = -y_value(fast_right_position_l, 535);
+                
+                    fast_l_add_position.positions[6] = -fast_right_position_l;
+                    fast_l_add_position.positions[7] = 700;
+                    fast_l_add_position.positions[8] = -y_value(fast_right_position_l, 700);
+            
+                    fast_l_add_position.positions[9] = -fast_left_position_l;
+                    fast_l_add_position.positions[10] = 700;
+                    fast_l_add_position.positions[11] = -y_value(fast_left_position_l, 700);
+            
+                    clipsNode.nodes[0].setPositions(fast_l_add_position);
+                });
+            });
+        }
+
+        fast_l_clips[0].dist = fast_left_position_l;        //left
+        fast_l_clips[1].dist = -fast_right_position_l;      //right
+        fast_l_clips[2].dist = -fast_bottom_position;
+        fast_l_clips[3].dist = fast_top_position;
+        
+        clipsNode.nodes[0].nodes[0].nodes[0].setClips(fast_l_clips);
+        scene.getNode('fast_l_lines',function (clipsNode) {
+            clipsNode.setEnabled(true);
+            fast_l_position.positions[0] = -fast_left_position_l;  //left
+            fast_l_position.positions[1] = fast_bottom_position;
+            fast_l_position.positions[2] = -y_value(fast_left_position_l, fast_bottom_position);
+
+            fast_l_position.positions[3] = -fast_right_position_l;
+            fast_l_position.positions[4] = fast_bottom_position;
+            fast_l_position.positions[5] = -y_value(fast_right_position_l, fast_bottom_position);
+        
+            fast_l_position.positions[6] = -fast_right_position_l;
+            fast_l_position.positions[7] = fast_top_position;
+            fast_l_position.positions[8] = -y_value(fast_right_position_l, fast_top_position);
+
+            fast_l_position.positions[9] = -fast_left_position_l;
+            fast_l_position.positions[10] = fast_top_position;
+            fast_l_position.positions[11] = -y_value(fast_left_position_l, fast_top_position);
+
+            clipsNode.nodes[0].setPositions(fast_l_position);
+        });
+    });       
+
+    scene.getNode('fast_r', function (clipsNode){
+        clipsNode.setEnabled(true);
+
+        if(index === 0){
+            scene.getNode('fast_r_add', function (clipsNode){
+                clipsNode.setEnabled(false);
+                scene.getNode('fast_r_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(false);
+                });
+            });
+            if(chanel){
+                fast_left_position_r = 0; 
+                fast_right_position_r = 168;
+            }
+            else {
+                fast_left_position_r = 336; 
+                fast_right_position_r = 504;
+            }
+            fast_bottom_position = 365;
+            fast_top_position = 535;
+        }
+        else if(index === 1){
+            scene.getNode('fast_r_add', function (clipsNode){
+                clipsNode.setEnabled(false);
+                scene.getNode('fast_r_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(false);
+                });
+            });
+            if(chanel){
+                fast_left_position_r = 168; 
+                fast_right_position_r = 336;
+            }
+            else {
+                fast_left_position_r = 504; 
+                fast_right_position_r = 672;
+            }
+            fast_bottom_position = 365;
+            fast_top_position = 535;
+        } 
+        else if(index === 2){
+            if(chanel){
+                fast_left_position_r = 0; 
+                fast_right_position_r = 168;
+            }
+            else {
+                fast_left_position_r = 336; 
+                fast_right_position_r = 504;
+            }
+            fast_bottom_position = 200;
+            fast_top_position = 365;
+            scene.getNode('fast_r_add', function (clipsNode){
+                clipsNode.setEnabled(true);
+                fast_r_clips_add[0].dist = -fast_left_position_r;        
+                fast_r_clips_add[1].dist = fast_right_position_r;
+                clipsNode.nodes[0].nodes[0].nodes[0].setClips(fast_r_clips_add);
+                scene.getNode('fast_r_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(true);
+                    fast_r_add_position.positions[0] = fast_left_position_r;
+                    fast_r_add_position.positions[1] = 535;
+                    fast_r_add_position.positions[2] = -y_value(fast_left_position_r, 535);
+            
+                    fast_r_add_position.positions[3] = fast_right_position_r;
+                    fast_r_add_position.positions[4] = 535;
+                    fast_r_add_position.positions[5] = -y_value(fast_right_position_r, 535);
+                
+                    fast_r_add_position.positions[6] = fast_right_position_r;
+                    fast_r_add_position.positions[7] = 700;
+                    fast_r_add_position.positions[8] = -y_value(fast_right_position_r, 700);
+            
+                    fast_r_add_position.positions[9] = fast_left_position_r;
+                    fast_r_add_position.positions[10] = 700;
+                    fast_r_add_position.positions[11] = -y_value(fast_left_position_r, 700);
+            
+                    clipsNode.nodes[0].setPositions(fast_r_add_position);
+                });
+            });
+        }
+        else if(index === 3){
+            if(chanel){
+                fast_left_position_r = 168; 
+                fast_right_position_r = 336;
+            }
+            else {
+                fast_left_position_r = 504; 
+                fast_right_position_r = 672;
+            }
+            fast_bottom_position = 200;
+            fast_top_position = 365;
+            scene.getNode('fast_r_add', function (clipsNode){
+                clipsNode.setEnabled(true);
+                fast_r_clips_add[0].dist = -fast_left_position_r;        
+                fast_r_clips_add[1].dist = fast_right_position_r;
+                clipsNode.nodes[0].nodes[0].nodes[0].setClips(fast_r_clips_add);
+                scene.getNode('fast_r_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(true);
+                    fast_r_add_position.positions[0] = fast_left_position_r;
+                    fast_r_add_position.positions[1] = 535;
+                    fast_r_add_position.positions[2] = -y_value(fast_left_position_r, 535);
+            
+                    fast_r_add_position.positions[3] = fast_right_position_r;
+                    fast_r_add_position.positions[4] = 535;
+                    fast_r_add_position.positions[5] = -y_value(fast_right_position_r, 535);
+                
+                    fast_r_add_position.positions[6] = fast_right_position_r;
+                    fast_r_add_position.positions[7] = 700;
+                    fast_r_add_position.positions[8] = -y_value(fast_right_position_r, 700);
+            
+                    fast_r_add_position.positions[9] = fast_left_position_r;
+                    fast_r_add_position.positions[10] = 700;
+                    fast_r_add_position.positions[11] = -y_value(fast_left_position_r, 700);
+            
+                    clipsNode.nodes[0].setPositions(fast_r_add_position);
+                });
+            });
+        }
+
+        fast_r_clips[0].dist = -fast_left_position_r;        //left
+        fast_r_clips[1].dist = fast_right_position_r;      //right
+        fast_r_clips[2].dist = -fast_bottom_position;
+        fast_r_clips[3].dist = fast_top_position;
+        
+        clipsNode.nodes[0].nodes[0].nodes[0].setClips(fast_r_clips);
+        scene.getNode('fast_r_lines',function (clipsNode) {
+            clipsNode.setEnabled(true);
+            fast_r_position.positions[0] = fast_left_position_r;  //left
+            fast_r_position.positions[1] = fast_bottom_position;
+            fast_r_position.positions[2] = -y_value(fast_left_position_r, fast_bottom_position);
+
+            fast_r_position.positions[3] = fast_right_position_r;
+            fast_r_position.positions[4] = fast_bottom_position;
+            fast_r_position.positions[5] = -y_value(fast_right_position_r, fast_bottom_position);
+        
+            fast_r_position.positions[6] = fast_right_position_r;
+            fast_r_position.positions[7] = fast_top_position;
+            fast_r_position.positions[8] = -y_value(fast_right_position_r, fast_top_position);
+
+            fast_r_position.positions[9] = fast_left_position_r;
+            fast_r_position.positions[10] = fast_top_position;
+            fast_r_position.positions[11] = -y_value(fast_left_position_r, fast_top_position);
+
+            clipsNode.nodes[0].setPositions(fast_r_position);
+        });
+    });       
+}
+
+
 function stop_fast() {
-    azimuth_index = 0;
-    fast_index = 0;
-    slow_index = 0;
     clearInterval(timer);
-    for(var i = 0; i < options_fast_l.length; i++){
-        scene.getNode(options_fast_l[i],
-            function (myEnable) {
-                myEnable.setEnabled(false);
-            }
-        )
-    }
-    for(var j = 0; j < options_fast_r.length; j++){
-        scene.getNode(options_fast_r[j],
-            function (myEnable) {
-                myEnable.setEnabled(false);
-            }
-        )
-    }
+    scene.getNode('fast_l', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('fast_l_add', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('fast_l_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('fast_l_add_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('fast_r', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('fast_r_add', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('fast_r_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('fast_r_add_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    show_info('stop');
 }
 
 function show_fast(value) {
     stop_fast();
-    var tempValue = value - 1;
-    scene.getNode(options_fast_l[tempValue], function (myEnable) {
-        myEnable.setEnabled(true);
-    });
-    scene.getNode(options_fast_r[tempValue], function (myEnable) {
-        myEnable.setEnabled(true);
-    });
+    if(value === "0"){
+        return;
+    }
+    fast_index = value;
+    fast_update(fast_index);
 }
 
 function fast_change() {
+    algorithm = 1;
     stop_azimuth();
     stop_fast();
     stop_slow();
     document.getElementById("azimuth_start").disabled = true;
     document.getElementById("azimuth_stop").disabled = true;
     document.getElementById("azimuth").disabled = true;
+    document.getElementById("phica0").disabled = true;
+    document.getElementById("phica8").disabled = true;
+    document.getElementById("phica12").disabled = true;
     document.getElementById("fast_start").disabled = false;
     document.getElementById("fast_stop").disabled = false;
     document.getElementById("fast").disabled = false;
@@ -1074,6 +1791,9 @@ function fast_change() {
     document.getElementById("slow_stop").disabled = true;
     document.getElementById("slow").disabled = true;
 }
+
+
+
 
 var slow_index = 0;
 var lastLayerNodeLeftSlow;
@@ -1140,6 +1860,7 @@ function show_slow(value) {
 }
 
 function slow_change() {
+    algorithm = 2;
     stop_azimuth();
     stop_fast();
     stop_slow();

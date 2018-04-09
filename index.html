@@ -52,13 +52,13 @@
                     <label><big>&phi;</big>цу:</label>
                 </td>
                 <td style="width: 15%;">
-                    0&deg;<input name="phica" type="radio" checked onclick="change_ficu(0)">
+                    0&deg;<input name="phica" id="phica0" type="radio" checked onclick="change_ficu(0)">
                 </td>
                 <td style="width: 15%;">
-                    8&deg;<input name="phica" type="radio" onclick="change_ficu(8)">
+                    8&deg;<input name="phica" id="phica8" type="radio" onclick="change_ficu(8)">
                 </td>
                 <td style="width: 15%;">
-                    12&deg;<input name="phica" type="radio" onclick="change_ficu(12)">
+                    12&deg;<input name="phica" id="phica12" type="radio" onclick="change_ficu(12)">
                 </td>
             </tr>
         </table>
@@ -81,7 +81,7 @@
                     </button>
                 </td>
                 <td style="width: 15%;">
-                    <input id="fast" type="number" min="0" max="8" value="0" onchange="show_fast(value)" disabled>
+                    <input id="fast" type="number" min="0" max="4" value="0" onchange="show_fast(value)" disabled>
                 </td>
             </tr>
         </table>
