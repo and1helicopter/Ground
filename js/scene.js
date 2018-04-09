@@ -32,7 +32,7 @@ var chanel = true;      //true: 2-4, false: 1-3
 var timer;
 
 function y_value(x_value, z_value){  
-    var r = 1000 * Math.cos(Math.asin(z_value/1000));
+    var r = 999 * Math.cos(Math.asin(z_value/999));
     var y0 = r * Math.cos(Math.asin(x_value/r));
     return y0;
 }
@@ -79,15 +79,29 @@ var azimuth_l_clips = [
         mode: "inside"
     }
 ];
-var azimuth_l_position = [
-    -azimuth_left_position_l, azimuth_bottom_position, -y_value(azimuth_left_position_l, azimuth_bottom_position),
-    -azimuth_right_position_l, azimuth_bottom_position, -y_value(azimuth_right_position_l, azimuth_bottom_position),
-    -azimuth_right_position_l, azimuth_top_position, -y_value(azimuth_right_position_l, azimuth_top_position),
-    -azimuth_left_position_l, azimuth_top_position, -y_value(azimuth_left_position_l, azimuth_top_position),
-    -50, 130, 0
-]
+var azimuth_l_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        // -azimuth_left_position_l, azimuth_bottom_position, -y_value(azimuth_left_position_l, azimuth_bottom_position),
+        // -azimuth_right_position_l, azimuth_bottom_position, -y_value(azimuth_right_position_l, azimuth_bottom_position),
+        // -azimuth_right_position_l, azimuth_top_position, -y_value(azimuth_right_position_l, azimuth_top_position),
+        // -azimuth_left_position_l, azimuth_top_position, -y_value(azimuth_left_position_l, azimuth_top_position),
+        -50, 130, 0
+    ]
+}
 
-
+var azimuth_l_add_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        -50, 130, 0
+    ]
+}
 
 var azimuth_l_clips_add = [
     // Left
@@ -441,7 +455,7 @@ var scene = SceneJS.createScene({
                                                                         type:"geometry/sphere",
                                                                         latudeBands:36,
                                                                         longitudeBands:36,
-                                                                        radius:990
+                                                                        radius:999
                                                                     }] 
                                                                 }
                                                             ]
@@ -453,12 +467,12 @@ var scene = SceneJS.createScene({
                                         {
                                             type:"layer",
                                             id:"azimuth_l_lines",
-                                            enabled: true,
+                                            enabled: false,
                                             nodes: [
                                                 {
                                                     type: "geometry",
                                                     primitive: "lines",
-                                                    positions: azimuth_l_position,
+                                                    positions: azimuth_l_position.positions,
                                                     indices: [
                                                         0, 4,
                                                         1, 4,
@@ -490,9 +504,9 @@ var scene = SceneJS.createScene({
                                                                     clips: azimuth_l_clips_add,
                                                                     nodes:[{
                                                                         type:"geometry/sphere",
-                                                                        latudeBands:20,
-                                                                        longitudeBands:30,
-                                                                        radius:990
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:999
                                                                     }] 
                                                                 }
                                                             ]
@@ -500,7 +514,25 @@ var scene = SceneJS.createScene({
                                                     ]
                                                 }
                                             ]
-                                        } 
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"azimuth_l_add_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: azimuth_l_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },                                        
                                         //Right_azimuth
 
                                         //fast_left
@@ -523,10 +555,12 @@ var scene = SceneJS.createScene({
 
 function chanel_change(value){
     chanel = value;
+    show_azimuth(azimuth_index);
 }
 
 function change_ficu(value){
     ficu = value;
+    show_azimuth(azimuth_index);
 }
 
 function start_azimuth() {
@@ -545,65 +579,104 @@ function start_azimuth() {
     }
     timer = setInterval(
         function () {
-            scene.getNode('azimuth_l', function (clipsNode){
-                azimuth_update(clipsNode);
-            });
+            azimuth_index++;
+            if(azimuth_index >= 32)  azimuth_index = 1;
+            azimuth_update(azimuth_index);            
         }, 1000);
 }
 
-function azimuth_update(clipsNode){
-    clipsNode.setEnabled(true);
-    azimuth_left_position_l -= 10.5; 
-    azimuth_right_position_l -= 10.5;
-
-    if(chanel){
-        if(azimuth_left_position_l <= 336){
-            azimuth_left_position_l = 672;
-            azimuth_right_position_l = 661.5;
-        }
-    }
-    else {
-        if(azimuth_left_position_l <= 0){
-            azimuth_left_position_l = 336;
-            azimuth_right_position_l = 325.5;
-        }  
-    }
-
-    if(ficu === 0){
-        scene.getNode('azimuth_l_add', function (clipsNode){
-            clipsNode.setEnabled(true);
-            azimuth_l_clips_add[0].dist = azimuth_left_position_l;        //left
-            azimuth_l_clips_add[1].dist = -azimuth_right_position_l;      //right
-            clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips_add);
-        });
-        azimuth_bottom_position = 200;
-        azimuth_top_position = 365;
-        azimuth_l_clips[2].dist = -azimuth_bottom_position;
-        azimuth_l_clips[3].dist = azimuth_top_position;
-    }
-    else if(ficu === 8){
-        azimuth_bottom_position = 365;
-        azimuth_top_position = 535;
-        azimuth_l_clips[2].dist = -azimuth_bottom_position;
-        azimuth_l_clips[3].dist = azimuth_top_position;
-    }
-    else if(ficu === 12){
-        azimuth_bottom_position = 450;
-        azimuth_top_position = 625;
-        azimuth_l_clips[2].dist = -azimuth_bottom_position;
-        azimuth_l_clips[3].dist = azimuth_top_position;
-    }
-
-    azimuth_l_clips[0].dist = azimuth_left_position_l;        //left
-    azimuth_l_clips[1].dist = -azimuth_right_position_l;      //right
-    
-    clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips);
-    scene.getNode('azimuth_l_lines',function (clipsNode) {
+function azimuth_update(azimuth_index){
+    var index = azimuth_index - 1;
+    scene.getNode('azimuth_l', function (clipsNode){
         clipsNode.setEnabled(true);
-        azimuth_l_position[0] = azimuth_left_position_l;  //left
-        clipsNode.nodes[0]._core.arrays.positions = azimuth_l_position;
-        clipsNode.nodes[0].setPositions(azimuth_l_position);
-    });
+
+        if(chanel){
+            azimuth_left_position_l = 672 - 10.5 * index; 
+            azimuth_right_position_l = 661.5 - 10.5 * index;
+            if(azimuth_left_position_l <= 336){
+                azimuth_left_position_l = 672;
+                azimuth_right_position_l = 661.5;
+            }
+        }
+        else {
+            azimuth_left_position_l = 336 - 10.5 * index; 
+            azimuth_right_position_l = 325.5 - 10.5 * index;
+            if(azimuth_left_position_l <= 0){
+                azimuth_left_position_l = 336;
+                azimuth_right_position_l = 325.5;
+            }  
+        }
+
+        if(ficu === 0){
+            scene.getNode('azimuth_l_add', function (clipsNode){
+                clipsNode.setEnabled(true);
+                azimuth_l_clips_add[0].dist = azimuth_left_position_l;        
+                azimuth_l_clips_add[1].dist = -azimuth_right_position_l;
+                clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips_add);
+                scene.getNode('azimuth_l_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(true);
+                    azimuth_l_add_position.positions[0] = -azimuth_left_position_l;
+                    azimuth_l_add_position.positions[1] = 535;
+                    azimuth_l_add_position.positions[2] = -y_value(azimuth_left_position_l, 535);
+            
+                    azimuth_l_add_position.positions[3] = -azimuth_right_position_l;
+                    azimuth_l_add_position.positions[4] = 535;
+                    azimuth_l_add_position.positions[5] = -y_value(azimuth_right_position_l, 535);
+                
+                    azimuth_l_add_position.positions[6] = -azimuth_right_position_l;
+                    azimuth_l_add_position.positions[7] = 700;
+                    azimuth_l_add_position.positions[8] = -y_value(azimuth_right_position_l, 700);
+            
+                    azimuth_l_add_position.positions[9] = -azimuth_left_position_l;
+                    azimuth_l_add_position.positions[10] = 700;
+                    azimuth_l_add_position.positions[11] = -y_value(azimuth_left_position_l, 700);
+            
+                    clipsNode.nodes[0].setPositions(azimuth_l_add_position);
+                });
+            });
+            azimuth_bottom_position = 200;
+            azimuth_top_position = 365;
+            azimuth_l_clips[2].dist = -azimuth_bottom_position;
+            azimuth_l_clips[3].dist = azimuth_top_position;
+        }
+        else if(ficu === 8){
+            azimuth_bottom_position = 365;
+            azimuth_top_position = 535;
+            azimuth_l_clips[2].dist = -azimuth_bottom_position;
+            azimuth_l_clips[3].dist = azimuth_top_position;
+        }
+        else if(ficu === 12){
+            azimuth_bottom_position = 450;
+            azimuth_top_position = 625;
+            azimuth_l_clips[2].dist = -azimuth_bottom_position;
+            azimuth_l_clips[3].dist = azimuth_top_position;
+        }
+
+        azimuth_l_clips[0].dist = azimuth_left_position_l;        //left
+        azimuth_l_clips[1].dist = -azimuth_right_position_l;      //right
+        
+        clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips);
+        scene.getNode('azimuth_l_lines',function (clipsNode) {
+            clipsNode.setEnabled(true);
+            azimuth_l_position.positions[0] = -azimuth_left_position_l;  //left
+            azimuth_l_position.positions[1] = azimuth_bottom_position;
+            azimuth_l_position.positions[2] = -y_value(azimuth_left_position_l, azimuth_bottom_position);
+
+            azimuth_l_position.positions[3] = -azimuth_right_position_l;
+            azimuth_l_position.positions[4] = azimuth_bottom_position;
+            azimuth_l_position.positions[5] = -y_value(azimuth_right_position_l, azimuth_bottom_position);
+        
+            azimuth_l_position.positions[6] = -azimuth_right_position_l;
+            azimuth_l_position.positions[7] = azimuth_top_position;
+            azimuth_l_position.positions[8] = -y_value(azimuth_right_position_l, azimuth_top_position);
+
+            azimuth_l_position.positions[9] = -azimuth_left_position_l;
+            azimuth_l_position.positions[10] = azimuth_top_position;
+            azimuth_l_position.positions[11] = -y_value(azimuth_left_position_l, azimuth_top_position);
+
+            clipsNode.nodes[0].setPositions(azimuth_l_position);
+        });
+    });    
 }
 
 function stop_azimuth() {
@@ -616,20 +689,25 @@ function stop_azimuth() {
             myEnable.setEnabled(false);
         }
     );
+    scene.getNode('azimuth_l_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('azimuth_l_add_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
     show_info('stop');
 }
 
 function show_azimuth(value) {
     stop_azimuth();
-    var tempValue = value - 1;
-    azimuth_index = tempValue;
-    scene.getNode(options_azimuth_l[tempValue], function (myEnable) {
-        myEnable.setEnabled(true);
-        show_info('azimuth');
-    });
-    scene.getNode(options_azimuth_r[tempValue], function (myEnable) {
-        myEnable.setEnabled(true);
-    });
+    if(value === "0"){
+        return;
+    }
+    azimuth_index = value;
+    azimuth_update(azimuth_index);
+
 }
 
 function azimuth_change() {
