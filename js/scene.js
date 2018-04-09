@@ -726,7 +726,7 @@ var scene = SceneJS.createScene({
                                                         {
                                                             type: "material",
                                                             color: {r: 0.8, g: 0.2, b: 0.2},
-                                                            alpha: 0.3,
+                                                            alpha: 0.4,
                                                             nodes: [
                                                                 {
                                                                     type: "clips",
@@ -777,7 +777,7 @@ var scene = SceneJS.createScene({
                                                         {
                                                             type: "material",
                                                             color: {r: 0.8, g: 0.2, b: 0.2},
-                                                            alpha: 0.3,
+                                                            alpha: 0.4,
                                                             nodes: [
                                                                 {
                                                                     type: "clips",
@@ -829,7 +829,7 @@ var scene = SceneJS.createScene({
                                                         {
                                                             type: "material",
                                                             color: {r: 0.8, g: 0.2, b: 0.2},
-                                                            alpha: 0.3,
+                                                            alpha: 0.4,
                                                             nodes: [
                                                                 {
                                                                     type: "clips",
@@ -880,7 +880,7 @@ var scene = SceneJS.createScene({
                                                         {
                                                             type: "material",
                                                             color: {r: 0.8, g: 0.2, b: 0.2},
-                                                            alpha: 0.3,
+                                                            alpha: 0.4,
                                                             nodes: [
                                                                 {
                                                                     type: "clips",
@@ -932,7 +932,7 @@ var scene = SceneJS.createScene({
                                                         {
                                                             type: "material",
                                                             color: {r: 0.8, g: 0.2, b: 0.2},
-                                                            alpha: 0.3,
+                                                            alpha: 0.4,
                                                             nodes: [
                                                                 {
                                                                     type: "clips",
@@ -983,7 +983,7 @@ var scene = SceneJS.createScene({
                                                         {
                                                             type: "material",
                                                             color: {r: 0.8, g: 0.2, b: 0.2},
-                                                            alpha: 0.3,
+                                                            alpha: 0.4,
                                                             nodes: [
                                                                 {
                                                                     type: "clips",
@@ -1035,7 +1035,7 @@ var scene = SceneJS.createScene({
                                                         {
                                                             type: "material",
                                                             color: {r: 0.8, g: 0.2, b: 0.2},
-                                                            alpha: 0.3,
+                                                            alpha: 0.4,
                                                             nodes: [
                                                                 {
                                                                     type: "clips",
@@ -1086,7 +1086,7 @@ var scene = SceneJS.createScene({
                                                         {
                                                             type: "material",
                                                             color: {r: 0.8, g: 0.2, b: 0.2},
-                                                            alpha: 0.3,
+                                                            alpha: 0.4,
                                                             nodes: [
                                                                 {
                                                                     type: "clips",

@@ -1,0 +1,3 @@
+node_modules/*
+radar-win32-x64/*
+*.7z
