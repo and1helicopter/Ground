@@ -92,7 +92,6 @@ var azimuth_l_position = {
         -50, 130, 0
     ]
 }
-
 var azimuth_l_add_position = {
     positions: [
         0, 0, 0,
@@ -102,7 +101,6 @@ var azimuth_l_add_position = {
         -50, 130, 0
     ]
 }
-
 var azimuth_l_clips_add = [
     // Left
     {
@@ -177,6 +175,70 @@ var azimuth_r_clips = [
         y: 1.0,
         z: 0.0,
         dist: azimuth_top_position,
+        mode: "inside"
+    },
+    //Back
+    {
+        x: 0.0,
+        y: 0.0,
+        z: 1.0,
+        dist: 0.0,
+        mode: "inside"
+    }
+];
+var azimuth_r_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        // -azimuth_left_position_l, azimuth_bottom_position, -y_value(azimuth_left_position_l, azimuth_bottom_position),
+        // -azimuth_right_position_l, azimuth_bottom_position, -y_value(azimuth_right_position_l, azimuth_bottom_position),
+        // -azimuth_right_position_l, azimuth_top_position, -y_value(azimuth_right_position_l, azimuth_top_position),
+        // -azimuth_left_position_l, azimuth_top_position, -y_value(azimuth_left_position_l, azimuth_top_position),
+        -50, 130, 0
+    ]
+}
+var azimuth_r_add_position = {
+    positions: [
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        0, 0, 0,
+        -50, 130, 0
+    ]
+}
+var azimuth_r_clips_add = [
+    // Left
+    {
+        x: -1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: azimuth_left_position_l,
+        mode: "inside"
+    },
+    // Right
+    {
+        x: 1.0,
+        y: 0.0,
+        z: 0.0,
+        dist: azimuth_right_position_l,
+        mode: "inside"
+    },
+    // Bottom
+    {
+        x: 0.0,
+        y: -1.0,
+        z: 0.0,
+        dist: -535,
+        mode: "inside"
+    },
+    // Top
+    {
+        x: 0.0,
+        y: 1.0,
+        z: 0.0,
+        dist: 700,
         mode: "inside"
     },
     //Back
@@ -534,7 +596,108 @@ var scene = SceneJS.createScene({
                                             ]
                                         },                                        
                                         //Right_azimuth
-
+                                        {   
+                                            type:"layer",
+                                            id:"azimuth_r",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "flags",
+                                                    flags: {
+                                                        transparent: true,
+                                                        solid: false
+                                                    },
+                                                    nodes: [
+                                                        {
+                                                            type: "material",
+                                                            color: {r: 0.8, g: 0.2, b: 0.2},
+                                                            alpha: 0.3,
+                                                            nodes: [
+                                                                {
+                                                                    type: "clips",
+                                                                    clips: azimuth_r_clips,
+                                                                    nodes:[{
+                                                                        type:"geometry/sphere",
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:999
+                                                                    }] 
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"azimuth_r_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: azimuth_r_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {   
+                                            type:"layer",
+                                            id:"azimuth_r_add",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "flags",
+                                                    flags: {
+                                                        transparent: true,
+                                                        solid: false
+                                                    },
+                                                    nodes: [
+                                                        {
+                                                            type: "material",
+                                                            color: {r: 0.8, g: 0.2, b: 0.2},
+                                                            alpha: 0.3,
+                                                            nodes: [
+                                                                {
+                                                                    type: "clips",
+                                                                    clips: azimuth_r_clips_add,
+                                                                    nodes:[{
+                                                                        type:"geometry/sphere",
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:999
+                                                                    }] 
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"azimuth_r_add_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: azimuth_r_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },  
                                         //fast_left
 
                                         //fast_right
@@ -677,6 +840,98 @@ function azimuth_update(azimuth_index){
             clipsNode.nodes[0].setPositions(azimuth_l_position);
         });
     });    
+
+    scene.getNode('azimuth_r', function (clipsNode){
+        clipsNode.setEnabled(true);
+
+        if(chanel){
+            azimuth_left_position_r = 0 + 10.5 * index; 
+            azimuth_right_position_r = 10.5 + 10.5 * index;
+            if(azimuth_left_position_r >= 336){
+                azimuth_left_position_r = 0; 
+                azimuth_right_position_r = 10.5;
+            }
+        }
+        else {
+            azimuth_left_position_r = 336 + 10.5 * index; 
+            azimuth_right_position_r = 346.5 + 10.5 * index;
+            if(azimuth_left_position_r >= 672){
+                azimuth_left_position_r = 336; 
+                azimuth_right_position_r = 346.5;
+            }  
+        }
+
+        if(ficu === 0){
+            scene.getNode('azimuth_r_add', function (clipsNode){
+                clipsNode.setEnabled(true);
+                azimuth_r_clips_add[0].dist = -azimuth_left_position_r;        
+                azimuth_r_clips_add[1].dist = azimuth_right_position_r;
+                clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_r_clips_add);
+                scene.getNode('azimuth_r_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(true);
+                    azimuth_r_add_position.positions[0] = azimuth_left_position_r;
+                    azimuth_r_add_position.positions[1] = 535;
+                    azimuth_r_add_position.positions[2] = -y_value(azimuth_left_position_r, 535);
+            
+                    azimuth_r_add_position.positions[3] = azimuth_right_position_r;
+                    azimuth_r_add_position.positions[4] = 535;
+                    azimuth_r_add_position.positions[5] = -y_value(azimuth_right_position_r, 535);
+                
+                    azimuth_r_add_position.positions[6] = azimuth_right_position_r;
+                    azimuth_r_add_position.positions[7] = 700;
+                    azimuth_r_add_position.positions[8] = -y_value(azimuth_right_position_r, 700);
+            
+                    azimuth_r_add_position.positions[9] = azimuth_left_position_r;
+                    azimuth_r_add_position.positions[10] = 700;
+                    azimuth_r_add_position.positions[11] = -y_value(azimuth_left_position_r, 700);
+            
+                    clipsNode.nodes[0].setPositions(azimuth_r_add_position);
+                });
+            });
+            azimuth_bottom_position = 200;
+            azimuth_top_position = 365;
+            azimuth_r_clips[2].dist = -azimuth_bottom_position;
+            azimuth_r_clips[3].dist = azimuth_top_position;
+        }
+        else if(ficu === 8){
+            azimuth_bottom_position = 365;
+            azimuth_top_position = 535;
+            azimuth_r_clips[2].dist = -azimuth_bottom_position;
+            azimuth_r_clips[3].dist = azimuth_top_position;
+        }
+        else if(ficu === 12){
+            azimuth_bottom_position = 450;
+            azimuth_top_position = 625;
+            azimuth_r_clips[2].dist = -azimuth_bottom_position;
+            azimuth_r_clips[3].dist = azimuth_top_position;
+        }
+
+        azimuth_r_clips[0].dist = -azimuth_left_position_r;        //left
+        azimuth_r_clips[1].dist = azimuth_right_position_r;      //right
+        
+        clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_r_clips);
+        scene.getNode('azimuth_r_lines',function (clipsNode) {
+            clipsNode.setEnabled(true);
+            azimuth_r_position.positions[0] = azimuth_left_position_r;  //left
+            azimuth_r_position.positions[1] = azimuth_bottom_position;
+            azimuth_r_position.positions[2] = -y_value(azimuth_left_position_r, azimuth_bottom_position);
+
+            azimuth_r_position.positions[3] = azimuth_right_position_r;
+            azimuth_r_position.positions[4] = azimuth_bottom_position;
+            azimuth_r_position.positions[5] = -y_value(azimuth_right_position_r, azimuth_bottom_position);
+        
+            azimuth_r_position.positions[6] = azimuth_right_position_r;
+            azimuth_r_position.positions[7] = azimuth_top_position;
+            azimuth_r_position.positions[8] = -y_value(azimuth_right_position_r, azimuth_top_position);
+
+            azimuth_r_position.positions[9] = azimuth_left_position_r;
+            azimuth_r_position.positions[10] = azimuth_top_position;
+            azimuth_r_position.positions[11] = -y_value(azimuth_left_position_r, azimuth_top_position);
+
+            clipsNode.nodes[0].setPositions(azimuth_r_position);
+        });
+    });    
+   
 }
 
 function stop_azimuth() {
@@ -694,6 +949,22 @@ function stop_azimuth() {
         }
     );
     scene.getNode('azimuth_l_add_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('azimuth_r', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('azimuth_r_add', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('azimuth_r_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('azimuth_r_add_lines', function (myEnable) {
             myEnable.setEnabled(false);
         }
     );
