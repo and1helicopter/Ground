@@ -1472,7 +1472,7 @@ function azimuth_update(azimuth_index){
         clipsNode.setEnabled(true);
 
         if(chanel){
-            azimuth_left_position_r = 0 + 10.5 * index; 
+            azimuth_left_position_r = 10.5 * index;
             azimuth_right_position_r = 10.5 + 10.5 * index;
             if(azimuth_left_position_r >= 336){
                 azimuth_left_position_r = 0; 
@@ -2055,7 +2055,7 @@ function slow_update(slow_index){
     scene.getNode('slow_r', function (clipsNode){
         clipsNode.setEnabled(true);
         
-        slow_left_position_r = 0 + 42 * index; 
+        slow_left_position_r = 42 * index;
         slow_right_position_r = 42 + 42 * index;
 
         slow_bottom_position = 440;
@@ -2154,6 +2154,147 @@ function show_info(alg){
         else {
             str = String(256 + (azimuth_index - 1) * 8) + '-' + String(256 + azimuth_index * 8);
         }
+        if(azimuth_index === 1 || azimuth_index === "1") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_01.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_01.jpg';
+        }
+        else if(azimuth_index === 2 || azimuth_index === "2") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_02.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_02.jpg';
+        }
+        else if(azimuth_index === 3 || azimuth_index === "3") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_03.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_03.jpg';
+        }
+        else if(azimuth_index === 4 || azimuth_index === "4") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_04.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_04.jpg';
+        }
+        else if(azimuth_index === 5 || azimuth_index === "5") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_05.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_05.jpg';
+        }
+        else if(azimuth_index === 6 || azimuth_index === "6") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_06.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_06.jpg';
+        }
+        else if(azimuth_index === 7 || azimuth_index === "7") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_07.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_07.jpg';
+        }
+        else if(azimuth_index === 8 || azimuth_index === "8") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_08.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_08.jpg';
+        }
+        else if(azimuth_index === 9 || azimuth_index === "9") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_09.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_09.jpg';
+        }
+        else if(azimuth_index === 10 || azimuth_index === "10") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_10.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_10.jpg';
+        }
+        else if(azimuth_index === 11 || azimuth_index === "11") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_11.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_11.jpg';
+        }
+        else if(azimuth_index === 12 || azimuth_index === "12") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_12.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_12.jpg';
+        }
+        else if(azimuth_index === 13 || azimuth_index === "13") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_13.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_13.jpg';
+        }
+        else if(azimuth_index === 14 || azimuth_index === "14") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_14.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_14.jpg';
+        }
+        else if(azimuth_index === 15 || azimuth_index === "15") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_15.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_15.jpg';
+        }
+        else if(azimuth_index === 16 || azimuth_index === "16") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_16.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_16.jpg';
+        }
+        else if(azimuth_index === 17 || azimuth_index === "17") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_17.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_17.jpg';
+        }
+        else if(azimuth_index === 18 || azimuth_index === "18") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_18.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_18.jpg';
+        }
+        else if(azimuth_index === 19 || azimuth_index === "19") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_19.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_19.jpg';
+        }
+        else if(azimuth_index === 20 || azimuth_index === "20") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_20.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_20.jpg';
+        }
+        else if(azimuth_index === 21 || azimuth_index === "21") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_21.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_21.jpg';
+        }
+        else if(azimuth_index === 22 || azimuth_index === "22") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_22.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_22.jpg';
+        }
+        else if(azimuth_index === 23 || azimuth_index === "23") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_23.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_23.jpg';
+        }
+        else if(azimuth_index === 24 || azimuth_index === "24") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_24.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_24.jpg';
+        }
+        else if(azimuth_index === 25 || azimuth_index === "25") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_25.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_25.jpg';
+        }
+        else if(azimuth_index === 26 || azimuth_index === "26") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_26.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_26.jpg';
+        }
+        else if(azimuth_index === 27 || azimuth_index === "27") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_27.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_27.jpg';
+        }
+        else if(azimuth_index === 28 || azimuth_index === "28") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_28.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_28.jpg';
+        }
+        else if(azimuth_index === 29 || azimuth_index === "29") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_29.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_29.jpg';
+        }
+        else if(azimuth_index === 30 || azimuth_index === "30") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_30.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_30.jpg';
+        }
+        else if(azimuth_index === 31 || azimuth_index === "31") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_31.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_31.jpg';
+        }
+        else if(azimuth_index === 32 || azimuth_index === "32") {
+            document.getElementById("_zone").src = 'img/azimuth/zone_32.jpg';
+            document.getElementById("_azimuth").src = 'img/azimuth/azimuth_32.jpg';
+        }
+
+        if(azimuth_ficu === 0){
+            document.getElementById("_angel").src = 'img/azimuth/angel_02.jpg';
+        }
+        else if(azimuth_ficu === 8){
+            document.getElementById("_angel").src = 'img/azimuth/angel_04.jpg';
+        }
+        else if(azimuth_ficu === 12){
+            document.getElementById("_angel").src = 'img/azimuth/angel_05.jpg';
+        }
+
+        document.getElementById("label_info").textContent = chanel ? 'Сектор 2-4' : 'Сектор 1-3';
+
     }
     else if(alg === "fast"){
         if(fast_index.toString() === "1" || fast_index.toString() === "3"){
@@ -2168,12 +2309,74 @@ function show_info(alg){
         else  if(fast_index.toString() === "6" || fast_index.toString() === "8"){
             str = String(384) + '-' + String(512);
         }
+
+        if(fast_index.toString() === "1" || fast_index.toString() === "5"){
+            document.getElementById("_zone").src = 'img/fast/zone_01.jpg';
+            document.getElementById("_azimuth").src = 'img/fast/azimuth_01.jpg';
+            document.getElementById("_angel").src = 'img/fast/angel_04.jpg';
+        }
+        else if(fast_index.toString() === "2" || fast_index.toString() === "6"){
+            document.getElementById("_zone").src = 'img/fast/zone_02.jpg';
+            document.getElementById("_azimuth").src = 'img/fast/azimuth_02.jpg';
+            document.getElementById("_angel").src = 'img/fast/angel_04.jpg';
+        }
+        else if(fast_index.toString() === "3" || fast_index.toString() === "7"){
+            document.getElementById("_zone").src = 'img/fast/zone_03.jpg';
+            document.getElementById("_azimuth").src = 'img/fast/azimuth_01.jpg';
+            document.getElementById("_angel").src = 'img/fast/angel_02.jpg';
+        }
+        else if(fast_index.toString() === "4" || fast_index.toString() === "8"){
+            document.getElementById("_zone").src = 'img/fast/zone_04.jpg';
+            document.getElementById("_azimuth").src = 'img/fast/azimuth_02.jpg';
+            document.getElementById("_angel").src = 'img/fast/angel_02.jpg';
+        }
+
+        document.getElementById("label_info").textContent = fast_index < 5 ? 'Сектор 2-4' : 'Сектор 1-3';
     }
     else if(alg === "slow"){
         str = String((slow_index - 1) * 32) + '-' + String(slow_index * 32);
+
+        if(slow_index.toString() === "1" || slow_index.toString() === "9"){
+            document.getElementById("_zone").src = 'img/slow/zone_01.jpg';
+            document.getElementById("_azimuth").src = 'img/slow/azimuth_01.jpg';
+        }
+        else if(slow_index.toString() === "2" || slow_index.toString() === "10"){
+            document.getElementById("_zone").src = 'img/slow/zone_02.jpg';
+            document.getElementById("_azimuth").src = 'img/slow/azimuth_02.jpg';
+        }
+        else if(slow_index.toString() === "3" || slow_index.toString() === "11"){
+            document.getElementById("_zone").src = 'img/slow/zone_03.jpg';
+            document.getElementById("_azimuth").src = 'img/slow/azimuth_03.jpg';
+        }
+        else if(slow_index.toString() === "4" || slow_index.toString() === "12"){
+            document.getElementById("_zone").src = 'img/slow/zone_04.jpg';
+            document.getElementById("_azimuth").src = 'img/slow/azimuth_04.jpg';
+        }
+        else if(slow_index.toString() === "5" || slow_index.toString() === "13"){
+            document.getElementById("_zone").src = 'img/slow/zone_05.jpg';
+            document.getElementById("_azimuth").src = 'img/slow/azimuth_05.jpg';
+        }
+        else if(slow_index.toString() === "6" || slow_index.toString() === "14"){
+            document.getElementById("_zone").src = 'img/slow/zone_06.jpg';
+            document.getElementById("_azimuth").src = 'img/slow/azimuth_06.jpg';
+        }
+        else if(slow_index.toString() === "7" || slow_index.toString() === "15"){
+            document.getElementById("_zone").src = 'img/slow/zone_07.jpg';
+            document.getElementById("_azimuth").src = 'img/slow/azimuth_07.jpg';
+        }
+        else if(slow_index.toString() === "8" || slow_index.toString() === "16"){
+            document.getElementById("_zone").src = 'img/slow/zone_08.jpg';
+            document.getElementById("_azimuth").src = 'img/slow/azimuth_08.jpg';
+        }
+
+        document.getElementById("label_info").textContent = slow_index < 9 ? 'Сектор 2-4' : 'Сектор 1-3';
+        document.getElementById("_angel").src = 'img/slow/angel_05.jpg';
     }
     else if(alg === "stop"){
-        document.getElementById("kartin").src = '';
+        document.getElementById("_azimuth").src = '';
+        document.getElementById("_angel").src = '';
+        document.getElementById("_zone").src = '';
+        document.getElementById("label_info").textContent = '';        
     }
     document.getElementById("label_angel").textContent  = str;
 }
