@@ -2,108 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42235d77-e5df-4706-831c-1e228714f5c4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/fast_01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/fast_02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/fast_03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/fast_04.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/fast_left.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/fast_right.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/ray_bottom.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/ray_center.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/ray_top.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/ray_top_bottom.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_04.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_05.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_06.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_07.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_08.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_09.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_10.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_11.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_12.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_13.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_14.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_15.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_16.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_17.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_18.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_19.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_20.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_21.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_22.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_23.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/slow_24.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_04.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_05.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_06.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_07.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_08.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_09.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_10.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_11.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_12.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_13.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_14.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_15.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_16.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_17.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_18.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_19.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_20.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_21.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_22.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_23.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_24.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_25.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_26.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_27.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_28.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_29.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_30.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_31.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_32.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_33.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_34.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_35.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_36.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_37.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_38.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_39.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_40.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_41.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_42.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_43.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_44.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_45.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_46.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_47.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_48.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_49.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_50.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_51.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_52.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_53.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_54.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_55.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_56.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_57.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_58.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_59.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_60.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_61.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_62.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_63.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/zone_64.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scene.js" afterPath="$PROJECT_DIR$/js/scene.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/Building_.3DS" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/building.3DS" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/building.obj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/building_1.obj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test.js" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -117,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="113" column="46" lean-forward="true" selection-start-line="113" selection-start-column="46" selection-end-line="113" selection-end-column="46" />
+            <state relative-caret-position="362">
+              <caret line="117" column="16" lean-forward="false" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -166,18 +70,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="84" column="33" lean-forward="false" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -188,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scene.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scene.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/scene.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-675">
-              <caret line="1336" column="17" lean-forward="true" selection-start-line="1336" selection-start-column="17" selection-end-line="1336" selection-end-column="17" />
+              <caret line="1336" column="17" lean-forward="false" selection-start-line="1336" selection-start-column="17" selection-end-line="1336" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -272,7 +164,6 @@
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
-    <handled-path value="$PROJECT_DIR$/radar-win32-x64/resources/app/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="166" />
@@ -319,22 +210,6 @@
             <path>
               <item name="Ground" type="b2602c69:ProjectViewProjectNode" />
               <item name="Ground" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Ground" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Ground" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Ground" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Ground" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-              <item name="azimuth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Ground" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Ground" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -401,16 +276,15 @@
       <workItem from="1523096666833" duration="7514000" />
       <workItem from="1523180745714" duration="624000" />
       <workItem from="1523256221716" duration="4577000" />
-      <workItem from="1523341306134" duration="7077000" />
+      <workItem from="1523341306134" duration="8116000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113817000" />
+    <option name="totallyTimeSpent" value="114856000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="69" y="-8" width="1305" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17679559" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -454,9 +328,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
           <caret line="88" column="21" lean-forward="false" selection-start-line="86" selection-start-column="20" selection-end-line="88" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -535,9 +407,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
           <caret line="88" column="21" lean-forward="false" selection-start-line="86" selection-start-column="20" selection-end-line="88" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -616,9 +486,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="54" column="64" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -697,9 +565,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="54" column="64" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -778,9 +644,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="54" column="64" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -859,9 +723,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="54" column="64" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1135,9 +997,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
           <caret line="84" column="33" lean-forward="false" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1157,10 +1017,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/scene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-675">
+          <caret line="1336" column="17" lean-forward="false" selection-start-line="1336" selection-start-column="17" selection-end-line="1336" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="113" column="46" lean-forward="true" selection-start-line="113" selection-start-column="46" selection-end-line="113" selection-end-column="46" />
+        <state relative-caret-position="362">
+          <caret line="117" column="16" lean-forward="false" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1201,14 +1069,6 @@
             <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-675">
-          <caret line="1336" column="17" lean-forward="true" selection-start-line="1336" selection-start-column="17" selection-end-line="1336" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
