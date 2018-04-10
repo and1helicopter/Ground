@@ -681,13 +681,13 @@ var scene = SceneJS.createScene({
                                             nodes: [
                                                 {
                                                     type: "rotate",
-                                                    x : 0, y : 1, z : 0, angle : -45,
+                                                    x : 0, y : 1, z : 0, angle : -60,
                                                     nodes:[
                                                         {
                                                             type:"geometry/box",
-                                                            xSize: 20,
+                                                            xSize: 15,
                                                             ySize: 30,
-                                                            zSize: 50
+                                                            zSize: 40
                                                         }
                                                     ]
                                                 }
@@ -699,13 +699,13 @@ var scene = SceneJS.createScene({
                                             nodes: [
                                                 {
                                                     type: "rotate",
-                                                    x : 0, y : 1, z : 0, angle : 45,
+                                                    x : 0, y : 1, z : 0, angle : 60,
                                                     nodes:[
                                                         {
                                                             type:"geometry/box",
-                                                            xSize: 20,
+                                                            xSize: 15,
                                                             ySize: 30,
-                                                            zSize: 50
+                                                            zSize: 40
                                                         }
                                                     ]
                                                 }
@@ -713,7 +713,7 @@ var scene = SceneJS.createScene({
                                         },
                                         {
                                             type: "translate",
-                                            x:0, y:110, z:0,
+                                            x:0, y:110, z:-20,
                                             nodes: [
                                                 {
                                                     type: "rotate",
@@ -721,9 +721,9 @@ var scene = SceneJS.createScene({
                                                     nodes:[
                                                         {
                                                             type:"geometry/box",
-                                                            xSize: 25,
-                                                            ySize: 50,
-                                                            zSize: 25
+                                                            xSize: 15,
+                                                            ySize: 20,
+                                                            zSize: 15
                                                         }
                                                     ]
                                                 }
@@ -1559,6 +1559,7 @@ function azimuth_update(azimuth_index){
         });
     });    
     document.getElementById("azimuth").value = azimuth_index;
+    show_info("azimuth");
 }
 
 function stop_azimuth() {
@@ -1929,6 +1930,7 @@ function fast_update(fast_index){
         });
     });       
     document.getElementById("fast").value = fast_index;
+    show_info("fast");
 }
 
 
@@ -2087,6 +2089,7 @@ function slow_update(slow_index){
         });
     });
     document.getElementById("slow").value = slow_index;
+    show_info("slow");
 }
 
 function stop_slow() {
@@ -2142,10 +2145,35 @@ function slow_change() {
     document.getElementById("slow").disabled = false;
 }
 
-function show_info (alg){
-
-    // if(alg === "stop"){
-    //     document.getElementById("kartin").src = '';
-    // }
-    // document.getElementById("label_angel").textContent  = str;
+function show_info(alg){
+    var str = '';
+    if(alg === "azimuth"){
+        if(chanel){
+            str = String((azimuth_index - 1) * 8) + '-' + String(azimuth_index * 8);
+        }
+        else {
+            str = String(256 + (azimuth_index - 1) * 8) + '-' + String(256 + azimuth_index * 8);
+        }
+    }
+    else if(alg === "fast"){
+        if(fast_index.toString() === "1" || fast_index.toString() === "3"){
+            str = String(0) + '-' + String(128);
+        }
+        else  if(fast_index.toString() === "2" || fast_index.toString() === "4"){
+            str = String(128) + '-' + String(256);
+        }
+        else  if(fast_index.toString() === "5" || fast_index.toString() === "7"){
+            str = String(256) + '-' + String(384);
+        }
+        else  if(fast_index.toString() === "6" || fast_index.toString() === "8"){
+            str = String(384) + '-' + String(512);
+        }
+    }
+    else if(alg === "slow"){
+        str = String((slow_index - 1) * 32) + '-' + String(slow_index * 32);
+    }
+    else if(alg === "stop"){
+        document.getElementById("kartin").src = '';
+    }
+    document.getElementById("label_angel").textContent  = str;
 }
