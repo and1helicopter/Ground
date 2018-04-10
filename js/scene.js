@@ -84,10 +84,6 @@ var azimuth_l_position = {
         0, 0, 0,
         0, 0, 0,
         0, 0, 0,
-        // -azimuth_left_position_l, azimuth_bottom_position, -y_value(azimuth_left_position_l, azimuth_bottom_position),
-        // -azimuth_right_position_l, azimuth_bottom_position, -y_value(azimuth_right_position_l, azimuth_bottom_position),
-        // -azimuth_right_position_l, azimuth_top_position, -y_value(azimuth_right_position_l, azimuth_top_position),
-        // -azimuth_left_position_l, azimuth_top_position, -y_value(azimuth_left_position_l, azimuth_top_position),
         -50, 130, 0
     ]
 }
@@ -191,11 +187,7 @@ var azimuth_r_position = {
         0, 0, 0,
         0, 0, 0,
         0, 0, 0,
-        // -azimuth_left_position_l, azimuth_bottom_position, -y_value(azimuth_left_position_l, azimuth_bottom_position),
-        // -azimuth_right_position_l, azimuth_bottom_position, -y_value(azimuth_right_position_l, azimuth_bottom_position),
-        // -azimuth_right_position_l, azimuth_top_position, -y_value(azimuth_right_position_l, azimuth_top_position),
-        // -azimuth_left_position_l, azimuth_top_position, -y_value(azimuth_left_position_l, azimuth_top_position),
-        -50, 130, 0
+        50, 130, 0
     ]
 }
 var azimuth_r_add_position = {
@@ -204,7 +196,7 @@ var azimuth_r_add_position = {
         0, 0, 0,
         0, 0, 0,
         0, 0, 0,
-        -50, 130, 0
+        50, 130, 0
     ]
 }
 var azimuth_r_clips_add = [
@@ -410,11 +402,7 @@ var fast_r_position = {
         0, 0, 0,
         0, 0, 0,
         0, 0, 0,
-        // -azimuth_left_position_l, azimuth_bottom_position, -y_value(azimuth_left_position_l, azimuth_bottom_position),
-        // -azimuth_right_position_l, azimuth_bottom_position, -y_value(azimuth_right_position_l, azimuth_bottom_position),
-        // -azimuth_right_position_l, azimuth_top_position, -y_value(azimuth_right_position_l, azimuth_top_position),
-        // -azimuth_left_position_l, azimuth_top_position, -y_value(azimuth_left_position_l, azimuth_top_position),
-        -50, 130, 0
+        50, 130, 0
     ]
 }
 var fast_r_add_position = {
@@ -423,7 +411,7 @@ var fast_r_add_position = {
         0, 0, 0,
         0, 0, 0,
         0, 0, 0,
-        -50, 130, 0
+        50, 130, 0
     ]
 }
 var fast_r_clips_add = [
@@ -579,7 +567,7 @@ var slow_r_position = {
         0, 0, 0,
         0, 0, 0,
         0, 0, 0,
-        -50, 130, 0
+        50, 130, 0
     ]
 }
 
@@ -1289,6 +1277,58 @@ var scene = SceneJS.createScene({
                                             ]
                                         },                                       
                                         //slow_right
+                                        {   
+                                            type:"layer",
+                                            id:"slow_r",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "flags",
+                                                    flags: {
+                                                        transparent: true,
+                                                        solid: false
+                                                    },
+                                                    nodes: [
+                                                        {
+                                                            type: "material",
+                                                            color: {r: 0.8, g: 0.2, b: 0.2},
+                                                            alpha: 0.4,
+                                                            nodes: [
+                                                                {
+                                                                    type: "clips",
+                                                                    clips: slow_r_clips,
+                                                                    nodes:[{
+                                                                        type:"geometry/sphere",
+                                                                        latudeBands:36,
+                                                                        longitudeBands:36,
+                                                                        radius:998
+                                                                    }] 
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            type:"layer",
+                                            id:"slow_r_lines",
+                                            enabled: false,
+                                            nodes: [
+                                                {
+                                                    type: "geometry",
+                                                    primitive: "lines",
+                                                    positions: slow_r_position.positions,
+                                                    indices: [
+                                                        0, 4,
+                                                        1, 4,
+                                                        2, 4,
+                                                        3, 4
+                                                    ]
+                                                }
+                                            ]
+                                        },                                       
+                                        
                                     ]
                                 }
                             ]
@@ -1303,16 +1343,15 @@ var scene = SceneJS.createScene({
 function chanel_change(value){
     chanel = value;
     if(algorithm === 0){
-        show_azimuth(azimuth_index);
-    }
-    else if (algorithm === 1){
-        show_fast(fast_index);
+        stop_azimuth();
+        azimuth_index = 0;
     }
 }
 
 function change_azimuth_ficu(value){
     azimuth_ficu = value;
-    show_azimuth(azimuth_index);
+    stop_azimuth();
+    azimuth_index = 0;
 }
 
 function start_azimuth() {
@@ -1429,7 +1468,6 @@ function azimuth_update(azimuth_index){
             clipsNode.nodes[0].setPositions(azimuth_l_position);
         });
     });    
-
     scene.getNode('azimuth_r', function (clipsNode){
         clipsNode.setEnabled(true);
 
@@ -1520,7 +1558,7 @@ function azimuth_update(azimuth_index){
             clipsNode.nodes[0].setPositions(azimuth_r_position);
         });
     });    
-   
+    document.getElementById("azimuth").value = azimuth_index;
 }
 
 function stop_azimuth() {
@@ -1557,6 +1595,8 @@ function stop_azimuth() {
             myEnable.setEnabled(false);
         }
     );
+    azimuth_index = 0;
+    document.getElementById("azimuth").value = azimuth_index;
     show_info('stop');
 }
 
@@ -1580,6 +1620,8 @@ function azimuth_change() {
     document.getElementById("phica0").disabled = false;
     document.getElementById("phica8").disabled = false;
     document.getElementById("phica12").disabled = false;
+    document.getElementById("chanel1_3").disabled = false;
+    document.getElementById("chanel2_4").disabled = false;
     document.getElementById("fast_start").disabled = true;
     document.getElementById("fast_stop").disabled = true;
     document.getElementById("fast").disabled = true;
@@ -1593,7 +1635,7 @@ function start_fast() {
     timer = setInterval(
         function () {
             fast_index++;
-            if(fast_index > 4)  fast_index = 1;
+            if(fast_index > 8)  fast_index = 1;
             fast_update(fast_index);            
         }, 1000);
 }
@@ -1603,14 +1645,14 @@ function fast_update(fast_index){
     scene.getNode('fast_l', function (clipsNode){
         clipsNode.setEnabled(true);
 
-        if(index === 0){
+        if(index === 0 || index === 4){
             scene.getNode('fast_l_add', function (clipsNode){
                 clipsNode.setEnabled(false);
                 scene.getNode('fast_l_add_lines',function (clipsNode) {
                     clipsNode.setEnabled(false);
                 });
             });
-            if(chanel){
+            if(index === 0 ){
                 fast_left_position_l = 672; 
                 fast_right_position_l = 504;
             }
@@ -1621,14 +1663,14 @@ function fast_update(fast_index){
             fast_bottom_position = 365;
             fast_top_position = 535;
         }
-        else if(index === 1){
+        else if(index === 1 || index === 5){
             scene.getNode('fast_l_add', function (clipsNode){
                 clipsNode.setEnabled(false);
                 scene.getNode('fast_l_add_lines',function (clipsNode) {
                     clipsNode.setEnabled(false);
                 });
             });
-            if(chanel){
+            if(index === 1){
                 fast_left_position_l = 504; 
                 fast_right_position_l = 336;
             }
@@ -1639,8 +1681,8 @@ function fast_update(fast_index){
             fast_bottom_position = 365;
             fast_top_position = 535;
         } 
-        else if(index === 2){
-            if(chanel){
+        else if(index === 2 || index === 6){
+            if(index === 2){
                 fast_left_position_l = 672; 
                 fast_right_position_l = 504;
             }
@@ -1677,8 +1719,8 @@ function fast_update(fast_index){
                 });
             });
         }
-        else if(index === 3){
-            if(chanel){
+        else if(index === 3 || index === 7){
+            if(index === 3){
                 fast_left_position_l = 504; 
                 fast_right_position_l = 336;
             }
@@ -1743,18 +1785,17 @@ function fast_update(fast_index){
             clipsNode.nodes[0].setPositions(fast_l_position);
         });
     });       
-
     scene.getNode('fast_r', function (clipsNode){
         clipsNode.setEnabled(true);
 
-        if(index === 0){
+        if(index === 0 || index === 4){
             scene.getNode('fast_r_add', function (clipsNode){
                 clipsNode.setEnabled(false);
                 scene.getNode('fast_r_add_lines',function (clipsNode) {
                     clipsNode.setEnabled(false);
                 });
             });
-            if(chanel){
+            if(index === 0){
                 fast_left_position_r = 0; 
                 fast_right_position_r = 168;
             }
@@ -1765,14 +1806,14 @@ function fast_update(fast_index){
             fast_bottom_position = 365;
             fast_top_position = 535;
         }
-        else if(index === 1){
+        else if(index === 1 || index === 5){
             scene.getNode('fast_r_add', function (clipsNode){
                 clipsNode.setEnabled(false);
                 scene.getNode('fast_r_add_lines',function (clipsNode) {
                     clipsNode.setEnabled(false);
                 });
             });
-            if(chanel){
+            if(index === 1){
                 fast_left_position_r = 168; 
                 fast_right_position_r = 336;
             }
@@ -1783,8 +1824,8 @@ function fast_update(fast_index){
             fast_bottom_position = 365;
             fast_top_position = 535;
         } 
-        else if(index === 2){
-            if(chanel){
+        else if(index === 2 || index === 6){
+            if(index === 2){
                 fast_left_position_r = 0; 
                 fast_right_position_r = 168;
             }
@@ -1821,8 +1862,8 @@ function fast_update(fast_index){
                 });
             });
         }
-        else if(index === 3){
-            if(chanel){
+        else if(index === 3 || index === 7){
+            if(index === 3){
                 fast_left_position_r = 168; 
                 fast_right_position_r = 336;
             }
@@ -1887,6 +1928,7 @@ function fast_update(fast_index){
             clipsNode.nodes[0].setPositions(fast_r_position);
         });
     });       
+    document.getElementById("fast").value = fast_index;
 }
 
 
@@ -1924,6 +1966,8 @@ function stop_fast() {
             myEnable.setEnabled(false);
         }
     );
+    fast_index = 0;
+    document.getElementById("fast").value = fast_index;
     show_info('stop');
 }
 
@@ -1947,12 +1991,14 @@ function fast_change() {
     document.getElementById("phica0").disabled = true;
     document.getElementById("phica8").disabled = true;
     document.getElementById("phica12").disabled = true;
+    document.getElementById("chanel1_3").disabled = true;
+    document.getElementById("chanel2_4").disabled = true;
     document.getElementById("fast_start").disabled = false;
     document.getElementById("fast_stop").disabled = false;
     document.getElementById("fast").disabled = false;
     document.getElementById("slow_start").disabled = true;
     document.getElementById("slow_stop").disabled = true;
-    document.getElementById("slow").disabled = true;
+    document.getElementById("slow").disabled = true;    
 }
 
 function start_slow() {
@@ -1960,30 +2006,21 @@ function start_slow() {
     timer = setInterval(
         function () {
             slow_index++;
-            if(slow_index > 8)  slow_index = 1;
+            if(slow_index > 16)  slow_index = 1;
             slow_update(slow_index);  
         }, 1000);
 }
 
 function slow_update(slow_index){
     var index = slow_index - 1;
-    scene.getNode('slow_r', function (clipsNode){
+    scene.getNode('slow_l', function (clipsNode){
         clipsNode.setEnabled(true);
         
-        if(slow_ficu === 15){
-            if(chanel){
-                slow_left_position_r = 672 - 84 * index; 
-                slow_right_position_r = 588 - 84 * index;
-            }
-            else {
-                slow_left_position_r = 336 - 84 * index; 
-                slow_right_position_r = 252 - 84 * index;
-            }
-            slow_bottom_position = 200;
-            slow_top_position = 440;
-        }
-        else if(slow_ficu === 10){}
-        else if(slow_ficu === 5){}
+        slow_left_position_l = 672 - 42 * index; 
+        slow_right_position_l = 630 - 42 * index;
+
+        slow_bottom_position = 440;
+        slow_top_position = 610;
 
         slow_l_clips[0].dist = slow_left_position_l;        //left
         slow_l_clips[1].dist = -slow_right_position_l;      //right
@@ -2012,38 +2049,76 @@ function slow_update(slow_index){
             clipsNode.nodes[0].setPositions(slow_l_position);
         });
     });
+
+    scene.getNode('slow_r', function (clipsNode){
+        clipsNode.setEnabled(true);
+        
+        slow_left_position_r = 0 + 42 * index; 
+        slow_right_position_r = 42 + 42 * index;
+
+        slow_bottom_position = 440;
+        slow_top_position = 610;
+
+        slow_r_clips[0].dist = -slow_left_position_r;        //left
+        slow_r_clips[1].dist = slow_right_position_r;      //right
+        slow_r_clips[2].dist = -slow_bottom_position;
+        slow_r_clips[3].dist = slow_top_position;
+        
+        clipsNode.nodes[0].nodes[0].nodes[0].setClips(slow_r_clips);
+        scene.getNode('slow_r_lines',function (clipsNode) {
+            clipsNode.setEnabled(true);
+            slow_r_position.positions[0] = slow_left_position_r;  //left
+            slow_r_position.positions[1] = slow_bottom_position;
+            slow_r_position.positions[2] = -y_value(slow_left_position_r, slow_bottom_position);
+
+            slow_r_position.positions[3] = slow_right_position_r;
+            slow_r_position.positions[4] = slow_bottom_position;
+            slow_r_position.positions[5] = -y_value(slow_right_position_r, slow_bottom_position);
+        
+            slow_r_position.positions[6] = slow_right_position_r;
+            slow_r_position.positions[7] = slow_top_position;
+            slow_r_position.positions[8] = -y_value(slow_right_position_r, slow_top_position);
+
+            slow_r_position.positions[9] = slow_left_position_r;
+            slow_r_position.positions[10] = slow_top_position;
+            slow_r_position.positions[11] = -y_value(slow_left_position_r, slow_top_position);
+
+            clipsNode.nodes[0].setPositions(slow_r_position);
+        });
+    });
+    document.getElementById("slow").value = slow_index;
 }
 
 function stop_slow() {
-    azimuth_index = 0;
-    fast_index = 0;
-    slow_index = 0;
     clearInterval(timer);
-    for(var i = 0; i < options_slow_l.length; i++){
-        scene.getNode(options_slow_l[i],
-            function (myEnable) {
-                myEnable.setEnabled(false);
-            }
-        )
-    }
-    for(var j = 0; j < options_slow_r.length; j++){
-        scene.getNode(options_slow_r[j],
-            function (myEnable) {
-                myEnable.setEnabled(false);
-            }
-        )
-    }
+    scene.getNode('slow_l', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('slow_l_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('slow_r', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    scene.getNode('slow_r_lines', function (myEnable) {
+            myEnable.setEnabled(false);
+        }
+    );
+    slow_index = 0;
+    document.getElementById("slow").value = slow_index;
+    show_info('stop');
 }
 
 function show_slow(value) {
     stop_slow();
-    var tempValue = value - 1;
-    scene.getNode(options_slow_l[tempValue], function (myEnable) {
-        myEnable.setEnabled(true);
-    });
-    scene.getNode(options_slow_r[tempValue], function (myEnable) {
-        myEnable.setEnabled(true);
-    });
+    if(value === "0"){
+        return;
+    }
+    slow_index = value;
+    slow_update(slow_index);
 }
 
 function slow_change() {
@@ -2057,6 +2132,8 @@ function slow_change() {
     document.getElementById("phica0").disabled = true;
     document.getElementById("phica8").disabled = true;
     document.getElementById("phica12").disabled = true;
+    document.getElementById("chanel1_3").disabled = true;
+    document.getElementById("chanel2_4").disabled = true;
     document.getElementById("fast_start").disabled = true;
     document.getElementById("fast_stop").disabled = true;
     document.getElementById("fast").disabled = true;
@@ -2066,76 +2143,9 @@ function slow_change() {
 }
 
 function show_info (alg){
-    var str = '';
-    if(alg === "azimuth"){
-        str = String(azimuth_index * 8) + '-' + String((azimuth_index + 1) * 8);
-        if(azimuth_index === 0) document.getElementById("kartin").src = 'img/zone_01.jpg';
-        else if(azimuth_index === 1) document.getElementById("kartin").src = 'img/zone_02.jpg';
-        else if(azimuth_index === 2) document.getElementById("kartin").src = 'img/zone_03.jpg';
-        else if(azimuth_index === 3) document.getElementById("kartin").src = 'img/zone_04.jpg';
-        else if(azimuth_index === 4) document.getElementById("kartin").src = 'img/zone_05.jpg';
-        else if(azimuth_index === 5) document.getElementById("kartin").src = 'img/zone_06.jpg';
-        else if(azimuth_index === 6) document.getElementById("kartin").src = 'img/zone_07.jpg';
-        else if(azimuth_index === 7) document.getElementById("kartin").src = 'img/zone_08.jpg';
-        else if(azimuth_index === 8) document.getElementById("kartin").src = 'img/zone_09.jpg';
-        else if(azimuth_index === 9) document.getElementById("kartin").src = 'img/zone_10.jpg';
-        else if(azimuth_index === 10) document.getElementById("kartin").src = 'img/zone_11.jpg';
-        else if(azimuth_index === 11) document.getElementById("kartin").src = 'img/zone_12.jpg';
-        else if(azimuth_index === 12) document.getElementById("kartin").src = 'img/zone_13.jpg';
-        else if(azimuth_index === 13) document.getElementById("kartin").src = 'img/zone_14.jpg';
-        else if(azimuth_index === 14) document.getElementById("kartin").src = 'img/zone_15.jpg';
-        else if(azimuth_index === 15) document.getElementById("kartin").src = 'img/zone_16.jpg';
-        else if(azimuth_index === 16) document.getElementById("kartin").src = 'img/zone_17.jpg';
-        else if(azimuth_index === 17) document.getElementById("kartin").src = 'img/zone_18.jpg';
-        else if(azimuth_index === 18) document.getElementById("kartin").src = 'img/zone_19.jpg';
-        else if(azimuth_index === 19) document.getElementById("kartin").src = 'img/zone_20.jpg';
-        else if(azimuth_index === 20) document.getElementById("kartin").src = 'img/zone_21.jpg';
-        else if(azimuth_index === 21) document.getElementById("kartin").src = 'img/zone_22.jpg';
-        else if(azimuth_index === 22) document.getElementById("kartin").src = 'img/zone_23.jpg';
-        else if(azimuth_index === 23) document.getElementById("kartin").src = 'img/zone_24.jpg';
-        else if(azimuth_index === 24) document.getElementById("kartin").src = 'img/zone_25.jpg';
-        else if(azimuth_index === 25) document.getElementById("kartin").src = 'img/zone_26.jpg';
-        else if(azimuth_index === 26) document.getElementById("kartin").src = 'img/zone_27.jpg';
-        else if(azimuth_index === 27) document.getElementById("kartin").src = 'img/zone_28.jpg';
-        else if(azimuth_index === 28) document.getElementById("kartin").src = 'img/zone_29.jpg';
-        else if(azimuth_index === 29) document.getElementById("kartin").src = 'img/zone_30.jpg';
-        else if(azimuth_index === 30) document.getElementById("kartin").src = 'img/zone_31.jpg';
-        else if(azimuth_index === 31) document.getElementById("kartin").src = 'img/zone_32.jpg';
-        else if(azimuth_index === 32) document.getElementById("kartin").src = 'img/zone_33.jpg';
-        else if(azimuth_index === 33) document.getElementById("kartin").src = 'img/zone_34.jpg';
-        else if(azimuth_index === 34) document.getElementById("kartin").src = 'img/zone_35.jpg';
-        else if(azimuth_index === 35) document.getElementById("kartin").src = 'img/zone_36.jpg';
-        else if(azimuth_index === 36) document.getElementById("kartin").src = 'img/zone_37.jpg';
-        else if(azimuth_index === 37) document.getElementById("kartin").src = 'img/zone_38.jpg';
-        else if(azimuth_index === 38) document.getElementById("kartin").src = 'img/zone_39.jpg';
-        else if(azimuth_index === 39) document.getElementById("kartin").src = 'img/zone_40.jpg';
-        else if(azimuth_index === 40) document.getElementById("kartin").src = 'img/zone_41.jpg';
-        else if(azimuth_index === 41) document.getElementById("kartin").src = 'img/zone_42.jpg';
-        else if(azimuth_index === 42) document.getElementById("kartin").src = 'img/zone_43.jpg';
-        else if(azimuth_index === 43) document.getElementById("kartin").src = 'img/zone_44.jpg';
-        else if(azimuth_index === 44) document.getElementById("kartin").src = 'img/zone_45.jpg';
-        else if(azimuth_index === 45) document.getElementById("kartin").src = 'img/zone_46.jpg';
-        else if(azimuth_index === 46) document.getElementById("kartin").src = 'img/zone_47.jpg';
-        else if(azimuth_index === 47) document.getElementById("kartin").src = 'img/zone_48.jpg';
-        else if(azimuth_index === 48) document.getElementById("kartin").src = 'img/zone_49.jpg';
-        else if(azimuth_index === 49) document.getElementById("kartin").src = 'img/zone_40.jpg';
-        else if(azimuth_index === 50) document.getElementById("kartin").src = 'img/zone_51.jpg';
-        else if(azimuth_index === 51) document.getElementById("kartin").src = 'img/zone_52.jpg';
-        else if(azimuth_index === 52) document.getElementById("kartin").src = 'img/zone_53.jpg';
-        else if(azimuth_index === 53) document.getElementById("kartin").src = 'img/zone_54.jpg';
-        else if(azimuth_index === 54) document.getElementById("kartin").src = 'img/zone_55.jpg';
-        else if(azimuth_index === 55) document.getElementById("kartin").src = 'img/zone_56.jpg';
-        else if(azimuth_index === 56) document.getElementById("kartin").src = 'img/zone_57.jpg';
-        else if(azimuth_index === 57) document.getElementById("kartin").src = 'img/zone_58.jpg';
-        else if(azimuth_index === 58) document.getElementById("kartin").src = 'img/zone_59.jpg';
-        else if(azimuth_index === 59) document.getElementById("kartin").src = 'img/zone_60.jpg';
-        else if(azimuth_index === 60) document.getElementById("kartin").src = 'img/zone_61.jpg';
-        else if(azimuth_index === 61) document.getElementById("kartin").src = 'img/zone_62.jpg';
-        else if(azimuth_index === 62) document.getElementById("kartin").src = 'img/zone_63.jpg';
-        else if(azimuth_index === 63) document.getElementById("kartin").src = 'img/zone_64.jpg';
-    }
-    if(alg === "stop"){
-        document.getElementById("kartin").src = '';
-    }
-    document.getElementById("label_angel").textContent  = str;
+
+    // if(alg === "stop"){
+    //     document.getElementById("kartin").src = '';
+    // }
+    // document.getElementById("label_angel").textContent  = str;
 }
