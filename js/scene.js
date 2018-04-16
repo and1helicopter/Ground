@@ -1558,7 +1558,7 @@ function azimuth_update(azimuth_index){
             clipsNode.nodes[0].setPositions(azimuth_r_position);
         });
     });    
-    document.getElementById("azimuth").value = azimuth_index;
+    document.getElementById("azimuth").value = chanel ? azimuth_index : azimuth_index + 32;
     show_info("azimuth");
 }
 
@@ -1606,7 +1606,20 @@ function show_azimuth(value) {
     if(value === "0"){
         return;
     }
-    azimuth_index = value;
+    
+    if(value > 32){ 
+        chanel_change(false);
+        azimuth_index = value - 32;
+        document.getElementById("chanel2_4").checked = false;   
+        document.getElementById("chanel1_3").checked = true;             
+    }
+    else{
+        chanel_change(true);
+        azimuth_index = value;
+        document.getElementById("chanel2_4").checked = true;   
+        document.getElementById("chanel1_3").checked = false;        
+    }
+
     azimuth_update(azimuth_index);
 }
 
