@@ -16,6 +16,7 @@ app.on('ready',function(){
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file',
         slashes: true
-    }));    
+    }));
 });
 app.on('window-all-closed', app.quit);
+

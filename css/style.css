@@ -37,6 +37,20 @@ body {
     border: solid 1px rgba(0 ,0 ,0 , 0.2);
 }
 
+.button_exit{
+    position: relative;
+    top: 5px;
+    left: 5px;
+    z-index: 1000;
+}
+
+.button_info{
+    position: relative;
+    top: 5px;
+    left: 5px;
+    z-index: 1000;
+}
+
 button {
     position: relative;
     display: inline-block;

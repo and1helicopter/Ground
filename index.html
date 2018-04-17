@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>title</title>
+    <title>Организация обзора пространства радиолокационной станцией</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/scenejs.js"></script>
 </head>
 <body>
+    <button class="button_exit" onclick="exit()">
+        <img src="img/exit.png">
+    </button>
+    <button class="button_info" onclick="info()">
+        <img src="img/info.png">
+    </button>
     <div class="menu">
         <table style="border: solid 1px rgba(0,0,0,0.1)">
             <tr>
@@ -41,6 +47,7 @@
                     </button>
                 </td>
                 <td style="width: 25%;">
+                    <label>Направление</label>
                     <input id="azimuth" type="number" min="0" max="64" value="0" onchange="show_azimuth(value)">
                 </td>
             </tr>

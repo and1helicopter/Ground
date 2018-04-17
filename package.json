@@ -1,7 +1,7 @@
 {
-  "name": "radar",
+  "name": "Radar",
   "version": "1.0.0",
-  "description": "Radar algorithm",
+  "description": "Организация обзора пространства радиолокационной станцией",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -14,7 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^1.8.4",
-    "electron-packager": "^12.0.0",
+    "electron-installer-windows": "^1.1.0",
+    "electron-packager": "^12.0.1",
     "electron-winstaller": "^2.6.4"
   },
   "dependencies": {
