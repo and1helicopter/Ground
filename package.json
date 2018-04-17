@@ -4,7 +4,9 @@
   "description": "Организация обзора пространства радиолокационной станцией",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager . --out dist/",
+    "setup": "electron-installer-windows --src dist/Radar-win32-x64/ --dest dist/installers/ --config config.json"
   },
   "repository": {
     "type": "git",
