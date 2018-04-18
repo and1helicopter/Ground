@@ -2691,7 +2691,7 @@ function exit() {
 }
 
 function info() {
-    window.open("./info.html")
+    window.open("./info.html", "", "width=575, height=400,resizable=no");
 }
 
 function info_close() {
