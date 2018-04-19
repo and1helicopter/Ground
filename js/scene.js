@@ -1377,229 +1377,189 @@ function start_azimuth() {
 }
 
 function azimuth_update(azimuth_index){
+    var index = azimuth_index - 1;
     document.getElementById("azimuth").value = azimuth_index;
-    if(azimuth_index < 33){
-        var index = azimuth_index - 1;
-        scene.getNode('azimuth_l', function (clipsNode){
-            clipsNode.setEnabled(true);
+    scene.getNode('azimuth_l', function (clipsNode){
+        clipsNode.setEnabled(true);
 
-            if(chanel){
-                azimuth_left_position_l = 672 - 10.5 * index;
-                azimuth_right_position_l = 661.5 - 10.5 * index;
-                if(azimuth_left_position_l <= 336){
-                    azimuth_left_position_l = 672;
-                    azimuth_right_position_l = 661.5;
-                }
+        if(chanel){
+            azimuth_left_position_l = 672 - 5.25 * index;
+            azimuth_right_position_l = 666.75 - 5.25 * index;
+            if(azimuth_left_position_l <= 336){
+                azimuth_left_position_l = 672;
+                azimuth_right_position_l = 666.75;
             }
-            else {
-                azimuth_left_position_l = 336 - 10.5 * index;
-                azimuth_right_position_l = 325.5 - 10.5 * index;
-                if(azimuth_left_position_l <= 0){
-                    azimuth_left_position_l = 336;
-                    azimuth_right_position_l = 325.5;
-                }
-            }
-
-            if(azimuth_ficu === 0){
-                scene.getNode('azimuth_l_add', function (clipsNode){
-                    clipsNode.setEnabled(true);
-                    azimuth_l_clips_add[0].dist = azimuth_left_position_l;
-                    azimuth_l_clips_add[1].dist = -azimuth_right_position_l;
-                    clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips_add);
-                    scene.getNode('azimuth_l_add_lines',function (clipsNode) {
-                        clipsNode.setEnabled(true);
-                        azimuth_l_add_position.positions[0] = -azimuth_left_position_l;
-                        azimuth_l_add_position.positions[1] = 535;
-                        azimuth_l_add_position.positions[2] = -y_value(azimuth_left_position_l, 535);
-
-                        azimuth_l_add_position.positions[3] = -azimuth_right_position_l;
-                        azimuth_l_add_position.positions[4] = 535;
-                        azimuth_l_add_position.positions[5] = -y_value(azimuth_right_position_l, 535);
-
-                        azimuth_l_add_position.positions[6] = -azimuth_right_position_l;
-                        azimuth_l_add_position.positions[7] = 700;
-                        azimuth_l_add_position.positions[8] = -y_value(azimuth_right_position_l, 700);
-
-                        azimuth_l_add_position.positions[9] = -azimuth_left_position_l;
-                        azimuth_l_add_position.positions[10] = 700;
-                        azimuth_l_add_position.positions[11] = -y_value(azimuth_left_position_l, 700);
-
-                        clipsNode.nodes[0].setPositions(azimuth_l_add_position);
-                    });
-                });
-                azimuth_bottom_position = 200;
-                azimuth_top_position = 365;
-                azimuth_l_clips[2].dist = -azimuth_bottom_position;
-                azimuth_l_clips[3].dist = azimuth_top_position;
-            }
-            else if(azimuth_ficu === 8){
-                azimuth_bottom_position = 365;
-                azimuth_top_position = 535;
-                azimuth_l_clips[2].dist = -azimuth_bottom_position;
-                azimuth_l_clips[3].dist = azimuth_top_position;
-            }
-            else if(azimuth_ficu === 12){
-                azimuth_bottom_position = 450;
-                azimuth_top_position = 625;
-                azimuth_l_clips[2].dist = -azimuth_bottom_position;
-                azimuth_l_clips[3].dist = azimuth_top_position;
-            }
-
-            azimuth_l_clips[0].dist = azimuth_left_position_l;        //left
-            azimuth_l_clips[1].dist = -azimuth_right_position_l;      //right
-
-            clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips);
-            scene.getNode('azimuth_l_lines',function (clipsNode) {
-                clipsNode.setEnabled(true);
-                azimuth_l_position.positions[0] = -azimuth_left_position_l;  //left
-                azimuth_l_position.positions[1] = azimuth_bottom_position;
-                azimuth_l_position.positions[2] = -y_value(azimuth_left_position_l, azimuth_bottom_position);
-
-                azimuth_l_position.positions[3] = -azimuth_right_position_l;
-                azimuth_l_position.positions[4] = azimuth_bottom_position;
-                azimuth_l_position.positions[5] = -y_value(azimuth_right_position_l, azimuth_bottom_position);
-
-                azimuth_l_position.positions[6] = -azimuth_right_position_l;
-                azimuth_l_position.positions[7] = azimuth_top_position;
-                azimuth_l_position.positions[8] = -y_value(azimuth_right_position_l, azimuth_top_position);
-
-                azimuth_l_position.positions[9] = -azimuth_left_position_l;
-                azimuth_l_position.positions[10] = azimuth_top_position;
-                azimuth_l_position.positions[11] = -y_value(azimuth_left_position_l, azimuth_top_position);
-
-                clipsNode.nodes[0].setPositions(azimuth_l_position);
-            });
-        });
-        {
-            scene.getNode('azimuth_r', function (myEnable) {
-                    myEnable.setEnabled(false);
-                }
-            );
-            scene.getNode('azimuth_r_add', function (myEnable) {
-                    myEnable.setEnabled(false);
-                }
-            );
-            scene.getNode('azimuth_r_lines', function (myEnable) {
-                    myEnable.setEnabled(false);
-                }
-            );
-            scene.getNode('azimuth_r_add_lines', function (myEnable) {
-                    myEnable.setEnabled(false);
-                }
-            );
         }
-    }
-    else {
-        var index = azimuth_index - 1 - 32;
-        scene.getNode('azimuth_r', function (clipsNode){
-            clipsNode.setEnabled(true);
-
-            if(chanel){
-                azimuth_left_position_r = 10.5 * index;
-                azimuth_right_position_r = 10.5 + 10.5 * index;
-                if(azimuth_left_position_r >= 336){
-                    azimuth_left_position_r = 0;
-                    azimuth_right_position_r = 10.5;
-                }
+        else {
+            azimuth_left_position_l = 336 - 5.25 * index;
+            azimuth_right_position_l = 330.75 - 5.25 * index;
+            if(azimuth_left_position_l <= 0){
+                azimuth_left_position_l = 336;
+                azimuth_right_position_l = 330.75;
             }
-            else {
-                azimuth_left_position_r = 336 + 10.5 * index;
-                azimuth_right_position_r = 346.5 + 10.5 * index;
-                if(azimuth_left_position_r >= 672){
-                    azimuth_left_position_r = 336;
-                    azimuth_right_position_r = 346.5;
-                }
-            }
-
-            if(azimuth_ficu === 0){
-                scene.getNode('azimuth_r_add', function (clipsNode){
-                    clipsNode.setEnabled(true);
-                    azimuth_r_clips_add[0].dist = -azimuth_left_position_r;
-                    azimuth_r_clips_add[1].dist = azimuth_right_position_r;
-                    clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_r_clips_add);
-                    scene.getNode('azimuth_r_add_lines',function (clipsNode) {
-                        clipsNode.setEnabled(true);
-                        azimuth_r_add_position.positions[0] = azimuth_left_position_r;
-                        azimuth_r_add_position.positions[1] = 535;
-                        azimuth_r_add_position.positions[2] = -y_value(azimuth_left_position_r, 535);
-
-                        azimuth_r_add_position.positions[3] = azimuth_right_position_r;
-                        azimuth_r_add_position.positions[4] = 535;
-                        azimuth_r_add_position.positions[5] = -y_value(azimuth_right_position_r, 535);
-
-                        azimuth_r_add_position.positions[6] = azimuth_right_position_r;
-                        azimuth_r_add_position.positions[7] = 700;
-                        azimuth_r_add_position.positions[8] = -y_value(azimuth_right_position_r, 700);
-
-                        azimuth_r_add_position.positions[9] = azimuth_left_position_r;
-                        azimuth_r_add_position.positions[10] = 700;
-                        azimuth_r_add_position.positions[11] = -y_value(azimuth_left_position_r, 700);
-
-                        clipsNode.nodes[0].setPositions(azimuth_r_add_position);
-                    });
-                });
-                azimuth_bottom_position = 200;
-                azimuth_top_position = 365;
-                azimuth_r_clips[2].dist = -azimuth_bottom_position;
-                azimuth_r_clips[3].dist = azimuth_top_position;
-            }
-            else if(azimuth_ficu === 8){
-                azimuth_bottom_position = 365;
-                azimuth_top_position = 535;
-                azimuth_r_clips[2].dist = -azimuth_bottom_position;
-                azimuth_r_clips[3].dist = azimuth_top_position;
-            }
-            else if(azimuth_ficu === 12){
-                azimuth_bottom_position = 450;
-                azimuth_top_position = 625;
-                azimuth_r_clips[2].dist = -azimuth_bottom_position;
-                azimuth_r_clips[3].dist = azimuth_top_position;
-            }
-
-            azimuth_r_clips[0].dist = -azimuth_left_position_r;        //left
-            azimuth_r_clips[1].dist = azimuth_right_position_r;      //right
-
-            clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_r_clips);
-            scene.getNode('azimuth_r_lines',function (clipsNode) {
-                clipsNode.setEnabled(true);
-                azimuth_r_position.positions[0] = azimuth_left_position_r;  //left
-                azimuth_r_position.positions[1] = azimuth_bottom_position;
-                azimuth_r_position.positions[2] = -y_value(azimuth_left_position_r, azimuth_bottom_position);
-
-                azimuth_r_position.positions[3] = azimuth_right_position_r;
-                azimuth_r_position.positions[4] = azimuth_bottom_position;
-                azimuth_r_position.positions[5] = -y_value(azimuth_right_position_r, azimuth_bottom_position);
-
-                azimuth_r_position.positions[6] = azimuth_right_position_r;
-                azimuth_r_position.positions[7] = azimuth_top_position;
-                azimuth_r_position.positions[8] = -y_value(azimuth_right_position_r, azimuth_top_position);
-
-                azimuth_r_position.positions[9] = azimuth_left_position_r;
-                azimuth_r_position.positions[10] = azimuth_top_position;
-                azimuth_r_position.positions[11] = -y_value(azimuth_left_position_r, azimuth_top_position);
-
-                clipsNode.nodes[0].setPositions(azimuth_r_position);
-            });
-        });
-        {
-            scene.getNode('azimuth_l', function (myEnable) {
-                    myEnable.setEnabled(false);
-                }
-            );
-            scene.getNode('azimuth_l_add', function (myEnable) {
-                    myEnable.setEnabled(false);
-                }
-            );
-            scene.getNode('azimuth_l_lines', function (myEnable) {
-                    myEnable.setEnabled(false);
-                }
-            );
-            scene.getNode('azimuth_l_add_lines', function (myEnable) {
-                    myEnable.setEnabled(false);
-                }
-            );
         }
-    }
+
+        if(azimuth_ficu === 0){
+            scene.getNode('azimuth_l_add', function (clipsNode){
+                clipsNode.setEnabled(true);
+                azimuth_l_clips_add[0].dist = azimuth_left_position_l;
+                azimuth_l_clips_add[1].dist = -azimuth_right_position_l;
+                clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips_add);
+                scene.getNode('azimuth_l_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(true);
+                    azimuth_l_add_position.positions[0] = -azimuth_left_position_l;
+                    azimuth_l_add_position.positions[1] = 535;
+                    azimuth_l_add_position.positions[2] = -y_value(azimuth_left_position_l, 535);
+
+                    azimuth_l_add_position.positions[3] = -azimuth_right_position_l;
+                    azimuth_l_add_position.positions[4] = 535;
+                    azimuth_l_add_position.positions[5] = -y_value(azimuth_right_position_l, 535);
+
+                    azimuth_l_add_position.positions[6] = -azimuth_right_position_l;
+                    azimuth_l_add_position.positions[7] = 700;
+                    azimuth_l_add_position.positions[8] = -y_value(azimuth_right_position_l, 700);
+
+                    azimuth_l_add_position.positions[9] = -azimuth_left_position_l;
+                    azimuth_l_add_position.positions[10] = 700;
+                    azimuth_l_add_position.positions[11] = -y_value(azimuth_left_position_l, 700);
+
+                    clipsNode.nodes[0].setPositions(azimuth_l_add_position);
+                });
+            });
+            azimuth_bottom_position = 200;
+            azimuth_top_position = 365;
+            azimuth_l_clips[2].dist = -azimuth_bottom_position;
+            azimuth_l_clips[3].dist = azimuth_top_position;
+        }
+        else if(azimuth_ficu === 8){
+            azimuth_bottom_position = 365;
+            azimuth_top_position = 535;
+            azimuth_l_clips[2].dist = -azimuth_bottom_position;
+            azimuth_l_clips[3].dist = azimuth_top_position;
+        }
+        else if(azimuth_ficu === 12){
+            azimuth_bottom_position = 450;
+            azimuth_top_position = 625;
+            azimuth_l_clips[2].dist = -azimuth_bottom_position;
+            azimuth_l_clips[3].dist = azimuth_top_position;
+        }
+
+        azimuth_l_clips[0].dist = azimuth_left_position_l;        //left
+        azimuth_l_clips[1].dist = -azimuth_right_position_l;      //right
+
+        clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_l_clips);
+        scene.getNode('azimuth_l_lines',function (clipsNode) {
+            clipsNode.setEnabled(true);
+            azimuth_l_position.positions[0] = -azimuth_left_position_l;  //left
+            azimuth_l_position.positions[1] = azimuth_bottom_position;
+            azimuth_l_position.positions[2] = -y_value(azimuth_left_position_l, azimuth_bottom_position);
+
+            azimuth_l_position.positions[3] = -azimuth_right_position_l;
+            azimuth_l_position.positions[4] = azimuth_bottom_position;
+            azimuth_l_position.positions[5] = -y_value(azimuth_right_position_l, azimuth_bottom_position);
+
+            azimuth_l_position.positions[6] = -azimuth_right_position_l;
+            azimuth_l_position.positions[7] = azimuth_top_position;
+            azimuth_l_position.positions[8] = -y_value(azimuth_right_position_l, azimuth_top_position);
+
+            azimuth_l_position.positions[9] = -azimuth_left_position_l;
+            azimuth_l_position.positions[10] = azimuth_top_position;
+            azimuth_l_position.positions[11] = -y_value(azimuth_left_position_l, azimuth_top_position);
+
+            clipsNode.nodes[0].setPositions(azimuth_l_position);
+        });
+    });
+    scene.getNode('azimuth_r', function (clipsNode){
+        clipsNode.setEnabled(true);
+
+        if(chanel){
+            azimuth_left_position_r = 5.25 * index;
+            azimuth_right_position_r = 5.25 + 5.25 * index;
+            if(azimuth_left_position_r >= 336){
+                azimuth_left_position_r = 0;
+                azimuth_right_position_r = 5.25;
+            }
+        }
+        else {
+            azimuth_left_position_r = 336 + 5.25 * index;
+            azimuth_right_position_r = 341.25 + 5.25 * index;
+            if(azimuth_left_position_r >= 672){
+                azimuth_left_position_r = 336;
+                azimuth_right_position_r = 341.25;
+            }
+        }
+
+        if(azimuth_ficu === 0){
+            scene.getNode('azimuth_r_add', function (clipsNode){
+                clipsNode.setEnabled(true);
+                azimuth_r_clips_add[0].dist = -azimuth_left_position_r;
+                azimuth_r_clips_add[1].dist = azimuth_right_position_r;
+                clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_r_clips_add);
+                scene.getNode('azimuth_r_add_lines',function (clipsNode) {
+                    clipsNode.setEnabled(true);
+                    azimuth_r_add_position.positions[0] = azimuth_left_position_r;
+                    azimuth_r_add_position.positions[1] = 535;
+                    azimuth_r_add_position.positions[2] = -y_value(azimuth_left_position_r, 535);
+
+                    azimuth_r_add_position.positions[3] = azimuth_right_position_r;
+                    azimuth_r_add_position.positions[4] = 535;
+                    azimuth_r_add_position.positions[5] = -y_value(azimuth_right_position_r, 535);
+
+                    azimuth_r_add_position.positions[6] = azimuth_right_position_r;
+                    azimuth_r_add_position.positions[7] = 700;
+                    azimuth_r_add_position.positions[8] = -y_value(azimuth_right_position_r, 700);
+
+                    azimuth_r_add_position.positions[9] = azimuth_left_position_r;
+                    azimuth_r_add_position.positions[10] = 700;
+                    azimuth_r_add_position.positions[11] = -y_value(azimuth_left_position_r, 700);
+
+                    clipsNode.nodes[0].setPositions(azimuth_r_add_position);
+                });
+            });
+            azimuth_bottom_position = 200;
+            azimuth_top_position = 365;
+            azimuth_r_clips[2].dist = -azimuth_bottom_position;
+            azimuth_r_clips[3].dist = azimuth_top_position;
+        }
+        else if(azimuth_ficu === 8){
+            azimuth_bottom_position = 365;
+            azimuth_top_position = 535;
+            azimuth_r_clips[2].dist = -azimuth_bottom_position;
+            azimuth_r_clips[3].dist = azimuth_top_position;
+        }
+        else if(azimuth_ficu === 12){
+            azimuth_bottom_position = 450;
+            azimuth_top_position = 625;
+            azimuth_r_clips[2].dist = -azimuth_bottom_position;
+            azimuth_r_clips[3].dist = azimuth_top_position;
+        }
+
+        azimuth_r_clips[0].dist = -azimuth_left_position_r;        //left
+        azimuth_r_clips[1].dist = azimuth_right_position_r;      //right
+
+        clipsNode.nodes[0].nodes[0].nodes[0].setClips(azimuth_r_clips);
+        scene.getNode('azimuth_r_lines',function (clipsNode) {
+            clipsNode.setEnabled(true);
+            azimuth_r_position.positions[0] = azimuth_left_position_r;  //left
+            azimuth_r_position.positions[1] = azimuth_bottom_position;
+            azimuth_r_position.positions[2] = -y_value(azimuth_left_position_r, azimuth_bottom_position);
+
+            azimuth_r_position.positions[3] = azimuth_right_position_r;
+            azimuth_r_position.positions[4] = azimuth_bottom_position;
+            azimuth_r_position.positions[5] = -y_value(azimuth_right_position_r, azimuth_bottom_position);
+
+            azimuth_r_position.positions[6] = azimuth_right_position_r;
+            azimuth_r_position.positions[7] = azimuth_top_position;
+            azimuth_r_position.positions[8] = -y_value(azimuth_right_position_r, azimuth_top_position);
+
+            azimuth_r_position.positions[9] = azimuth_left_position_r;
+            azimuth_r_position.positions[10] = azimuth_top_position;
+            azimuth_r_position.positions[11] = -y_value(azimuth_left_position_r, azimuth_top_position);
+
+            clipsNode.nodes[0].setPositions(azimuth_r_position);
+        });
+    });
+
     show_info("azimuth");
 }
 
@@ -2203,7 +2163,7 @@ function show_info(alg){
     var str = '';
     if(alg === "azimuth"){
         str = String((azimuth_index - 1) * 8 - 1 < 0 ? 0 : (azimuth_index - 1) * 8 - 1) + '-' + String(azimuth_index * 8 - 1);
-        if(azimuth_index%32 === 1 ) {
+        if(azimuth_index%64 === 1 || azimuth_index%64 === 2) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_01_00.jpg';
             }
@@ -2215,7 +2175,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_01.jpg';
         }
-        else if(azimuth_index%32 === 2 ) {
+        else if(azimuth_index%64 === 3 || azimuth_index%64 === 4) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_02_00.jpg';
             }
@@ -2227,7 +2187,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_02.jpg';
         }
-        else if(azimuth_index%32 === 3 ) {
+        else if(azimuth_index%64 === 5 || azimuth_index%64 === 6) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_03_00.jpg';
             }
@@ -2239,7 +2199,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_03.jpg';
         }
-        else if(azimuth_index%32 === 4 ) {
+        else if(azimuth_index%64 === 7 || azimuth_index%64 === 8) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_04_00.jpg';
             }
@@ -2251,7 +2211,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_04.jpg';
         }
-        else if(azimuth_index%32 === 5 ) {
+        else if(azimuth_index%64 === 9 || azimuth_index%64 === 10) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_05_00.jpg';
             }
@@ -2263,7 +2223,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_05.jpg';
         }
-        else if(azimuth_index%32 === 6 ) {
+        else if(azimuth_index%64 === 11 || azimuth_index%64 === 12) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_06_00.jpg';
             }
@@ -2275,7 +2235,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_06.jpg';
         }
-        else if(azimuth_index%32 === 7 ) {
+        else if(azimuth_index%64 === 13 || azimuth_index%64 === 14) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_07_00.jpg';
             }
@@ -2287,7 +2247,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_07.jpg';
         }
-        else if(azimuth_index%32 === 8 ) {
+        else if(azimuth_index%64 === 15 || azimuth_index%64 === 16) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_08_00.jpg';
             }
@@ -2299,7 +2259,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_08.jpg';
         }
-        else if(azimuth_index%32 === 9 ) {
+        else if(azimuth_index%64 === 17 || azimuth_index%64 === 18) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_09_00.jpg';
             }
@@ -2311,7 +2271,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_09.jpg';
         }
-        else if(azimuth_index%32 === 10) {
+        else if(azimuth_index%64 === 19 || azimuth_index%64 === 20) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_10_00.jpg';
             }
@@ -2323,7 +2283,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_10.jpg';
         }
-        else if(azimuth_index%32 === 11 ) {
+        else if(azimuth_index%64 === 21 || azimuth_index%64 === 22) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_11_00.jpg';
             }
@@ -2335,7 +2295,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_11.jpg';
         }
-        else if(azimuth_index%32 === 12 ) {
+        else if(azimuth_index%64 === 23 || azimuth_index%64 === 24) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_12_00.jpg';
             }
@@ -2347,7 +2307,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_12.jpg';
         }
-        else if(azimuth_index%32 === 13 ) {
+        else if(azimuth_index%64 === 25 || azimuth_index%64 === 26) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_13_00.jpg';
             }
@@ -2359,7 +2319,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_13.jpg';
         }
-        else if(azimuth_index%32 === 14 ) {
+        else if(azimuth_index%64 === 27 || azimuth_index%64 === 28) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_14_00.jpg';
             }
@@ -2371,7 +2331,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_14.jpg';
         }
-        else if(azimuth_index%32 === 15 ) {
+        else if(azimuth_index%64 === 29 || azimuth_index%64 === 30) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_15_00.jpg';
             }
@@ -2383,7 +2343,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_15.jpg';
         }
-        else if(azimuth_index%32 === 16) {
+        else if(azimuth_index%64 === 31 || azimuth_index%64 === 32) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_16_00.jpg';
             }
@@ -2395,7 +2355,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_16.jpg';
         }
-        else if(azimuth_index%32 === 17 ) {
+        else if(azimuth_index%64 === 33 || azimuth_index%64 === 34) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_17_00.jpg';
             }
@@ -2407,7 +2367,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_17.jpg';
         }
-        else if(azimuth_index%32 === 18 ) {
+        else if(azimuth_index%64 === 35 || azimuth_index%64 === 36) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_18_00.jpg';
             }
@@ -2419,7 +2379,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_18.jpg';
         }
-        else if(azimuth_index%32 === 19 ) {
+        else if(azimuth_index%64 === 37 || azimuth_index%64 === 38) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_19_00.jpg';
             }
@@ -2431,7 +2391,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_19.jpg';
         }
-        else if(azimuth_index%32 === 20) {
+        else if(azimuth_index%64 === 39 || azimuth_index%64 === 40) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_20_00.jpg';
             }
@@ -2443,7 +2403,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_20.jpg';
         }
-        else if(azimuth_index%32 === 21) {
+        else if(azimuth_index%64 === 41 || azimuth_index%64 === 42) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_21_00.jpg';
             }
@@ -2455,7 +2415,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_21.jpg';
         }
-        else if(azimuth_index%32 === 22 ) {
+        else if(azimuth_index%64 === 43 || azimuth_index%64 === 44) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_22_00.jpg';
             }
@@ -2467,7 +2427,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_22.jpg';
         }
-        else if(azimuth_index%32 === 23 ) {
+        else if(azimuth_index%64 === 45 || azimuth_index%64 === 46) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_23_00.jpg';
             }
@@ -2479,7 +2439,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_23.jpg';
         }
-        else if(azimuth_index%32 === 24 ) {
+        else if(azimuth_index%64 === 47 || azimuth_index%64 === 48) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_24_00.jpg';
             }
@@ -2491,7 +2451,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_24.jpg';
         }
-        else if(azimuth_index%32 === 25 ) {
+        else if(azimuth_index%64 === 49 || azimuth_index%64 === 50) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_25_00.jpg';
             }
@@ -2503,7 +2463,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_25.jpg';
         }
-        else if(azimuth_index%32 === 26 ) {
+        else if(azimuth_index%64 === 51 || azimuth_index%64 === 52) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_26_00.jpg';
             }
@@ -2515,7 +2475,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_26.jpg';
         }
-        else if(azimuth_index%32 === 27 ) {
+        else if(azimuth_index%64 === 53 || azimuth_index%64 === 54) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_27_00.jpg';
             }
@@ -2527,7 +2487,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_27.jpg';
         }
-        else if(azimuth_index%32 === 28 ) {
+        else if(azimuth_index%64 === 55 || azimuth_index%64 === 56) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_28_00.jpg';
             }
@@ -2539,7 +2499,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_28.jpg';
         }
-        else if(azimuth_index%32 === 29 ) {
+        else if(azimuth_index%64 === 57 || azimuth_index%64 === 58) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_29_00.jpg';
             }
@@ -2551,7 +2511,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_29.jpg';
         }
-        else if(azimuth_index%32 === 30 ) {
+        else if(azimuth_index%64 === 59 || azimuth_index%64 === 60) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_30_00.jpg';
             }
@@ -2563,7 +2523,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_30.jpg';
         }
-        else if(azimuth_index%32 === 31 ) {
+        else if(azimuth_index%64 === 61 || azimuth_index%64 === 62) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_31_00.jpg';
             }
@@ -2575,7 +2535,7 @@ function show_info(alg){
             }
             document.getElementById("_azimuth").src = 'img/azimuth/azimuth_31.jpg';
         }
-        else if(azimuth_index%32 === 0) {
+        else if(azimuth_index%64 === 63 || azimuth_index%64 === 0) {
             if(azimuth_ficu === 0){
                 document.getElementById("_zone").src = 'img/azimuth/zone_32_00.jpg';
             }
@@ -2691,7 +2651,7 @@ function exit() {
 }
 
 function info() {
-    window.open("./info.html", "", "width=575, height=400,resizable=no");
+    window.open("./info.html", "", "width=575, height=475,resizable=no");
 }
 
 function info_close() {
